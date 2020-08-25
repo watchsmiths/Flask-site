@@ -18,7 +18,7 @@ def account():
     if 'email' not in session:
         flash(f'Please login first', 'danger')
         return redirect(url_for('login'))
-    return render_template('admin/index.html', title='Account Page', products=products)
+    return render_template('admin/index.html', title='Account Page')
 
 
 
