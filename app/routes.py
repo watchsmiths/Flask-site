@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash, abort
 import requests, os
 from PIL import Image
 
@@ -13,42 +13,42 @@ def home():
 
 
 
-@app.route('/account')
-def account():
-    if 'email' not in session:
-        flash(f'Please login first', 'danger')
-        return redirect(url_for('login'))
-    return render_template('admin/index.html', title='Account Page')
+# @app.route('/account')
+# def account():
+#     if 'email' not in session:
+#         flash(f'Please login first', 'danger')
+#         return redirect(url_for('login'))
+#     return render_template('admin/index.html', title='Account Page')
 
 
 
-@app.route('/admin/register', methods=['GET', 'POST'])
-def register():
-    form = RegistrationForm(request.form)
-    if request.method == 'POST' and form.validate():
-        hash_password = bcrypt.generate_password_hash(form.password.data)
+# @app.route('/admin/register', methods=['GET', 'POST'])
+# def register():
+#     form = RegistrationForm(request.form)
+#     if request.method == 'POST' and form.validate():
+#         hash_password = bcrypt.generate_password_hash(form.password.data)
         
-        user = User(firstname=form.firstname.data, lastname=form.lastname.data, email=form.email.data,
-                    password=hash_password)
-        db.session.add(user)
-        db.session.commit()
-        flash(f'Welcome {form.firstname.data}, Thank you for registering','success')
-        return redirect(url_for('account'))
-    return render_template('admin/register.html', form=form, title="Register User")
+#         user = User(firstname=form.firstname.data, lastname=form.lastname.data, email=form.email.data,
+#                     password=hash_password)
+#         db.session.add(user)
+#         db.session.commit()
+#         flash(f'Welcome {form.firstname.data}, Thank you for registering','success')
+#         return redirect(url_for('account'))
+#     return render_template('admin/register.html', form=form, title="Register User")
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm(request.form)
-    if request.method == "POST" and form.validate():
-        user = User.query.filter_by(email = form.email.data).first()
-        if user and bcrypt.check_password_hash(user.password, form.password.data): 
-            session['email'] = form.email.data
-            flash(f'Welcome {User.firstname}, You are now logged in', 'success')
-            return redirect(request.args.get('next') or url_for('account'))
-        else:
-            flash('Wrong Password, please try again', 'danger')
-    return render_template('admin/login.html', form=form, title="login")
+# @app.route('/login', methods=['GET', 'POST'])
+# def login():
+#     form = LoginForm(request.form)
+#     if request.method == "POST" and form.validate():
+#         user = User.query.filter_by(email = form.email.data).first()
+#         if user and bcrypt.check_password_hash(user.password, form.password.data): 
+#             session['email'] = form.email.data
+#             flash(f'Welcome {User.firstname}, You are now logged in', 'success')
+#             return redirect(request.args.get('next') or url_for('account'))
+#         else:
+#             flash('Wrong Password, please try again', 'danger')
+#     return render_template('admin/login.html', form=form, title="login")
 
 
 
@@ -97,7 +97,10 @@ def watchbrand(watch_brand):
         },
     ]
     
-    return render_template('brandpage.html', watch_brand=watch_brand)
+    if watch_brand not in brands.name():
+        abort(404)
+    else:
+        return render_template('brandpage.html', watch_brand=watch_brand)
    
 
 @app.route('/sale')

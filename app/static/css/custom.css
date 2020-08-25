@@ -37,6 +37,10 @@
 	margin: 0;
 }
 
+.newsletter_form{
+	display: flex;
+}
+
 #newsletter-discount {
 	font-weight: bold;
     color: #b3aa9b;
