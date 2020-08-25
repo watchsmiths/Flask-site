@@ -11,10 +11,10 @@
 	padding: 0px 1em 25px;
 	border-bottom: 3px Solid #f0eeeb;
 }
-
+/* 
 .header-mobile-login {
 	float: right;
-}
+} */
 
 .cart-dropdown{
 	visibility: hidden
@@ -96,9 +96,9 @@
 }
 
 @media (max-width:650px){
-	.header-mobile-login {
+	/* .header-mobile-login {
 		font-size: 0.65em;
-	}
+	} */
 	.page-banner > h1 {
 		font-size: 1.9em;
 	}
@@ -115,11 +115,11 @@
 	}
 }
 
-@media (max-width:992px) {
+/* @media (max-width:992px) {
 	.header-login {
 		display: none;
 	}
-}
+} */
 
 @media (min-width: 768px) {
 
@@ -142,9 +142,9 @@
 		border-right: 1px solid #beb2a6;
 		border-bottom: none;
 	}
-	.header-mobile-login {
+	/* .header-mobile-login {
 			display: none;
-		}
+		} */
 }
 
 
