@@ -3,8 +3,8 @@ import requests, os
 from PIL import Image
 
 from app import app, db, bcrypt
-from .forms import RegistrationForm, LoginForm
-from .models import User 
+from forms import RegistrationForm, LoginForm
+from models import User 
 
 
 @app.route('/', methods=["GET", "POST"])
