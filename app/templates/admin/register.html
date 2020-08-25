@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+		<div class="page-breadcrumb">
+			<ol class="breadcrumb">
+				<li><a title="Home" href="{{ url_for('home')}}">Home</a></li>
+				<li class="active">Create Account</li>
+			</ol>
+			<div class="return-home-link pull-right">
+				<a title="Return to home page" href="{{ url_for('home')}}">return to home page</a>
+			</div>
+		</div>
+		<div class="page-header bottom-shadow">
+			<h3>Create Account</h3>
+			<p>It’s free!</p>
+		</div><!-- Section Header /- -->
+	</div>
+	<div class="contact-form-details">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-sm-6"><!-- User Form -->
+					<div class="section-header">
+						<h3>New User</h3>
+					</div><!-- Section Header /- -->
+					<div class="contact-form animated fadeInUp">
+						{% from "_formhelpers.html" import render_field %}
+						<form class="form-horizontal" method="POST" enctype="multipart/form-data">
+							<div class="form-group">
+								{{ render_field(form.firstname, class="form-control", id="FirstName", placeholder="enter your first name", required="") }}
+								{{ render_field(form.lastname, class="form-control", id="LastName", placeholder="enter your first name", required="") }}
+								{{ render_field(form.email, class="form-control", id="txt_email", placeholder="Enter your email") }}
+								{{ render_field(form.password, class="form-control", id="password", placeholder="Enter Password", required="") }}
+								{{ render_field(form.confirm, class="form-control", id="password", placeholder="Enter Password", required="") }}
+							</div>
+							<div class="drop-line bottom-shadow"></div>
+							 <div class="form-group">
+								<a title="Or Return to Shop" href="#">Or Return to Shop</a>	
+							
+								<input type="submit" value="create an acoount" class="btn btn-default  pull-right">
+							</div>
+						</form>
+					</div>
+				</div><!-- User Form /- -->
+				<div class="col-md-6 col-sm-6"> 
+					<!-- Section Header -->
+					<div class="section-header">
+						<h3>Registered User</h3>
+					</div><!-- Section Header /- -->
+					<div class="contact-details register-user animated fadeInDown"> 
+						<div class="register-user-banner">
+							<img src="{{ url_for('static', filename='images/register/register-user.png') }}" alt="register-user">
+							<h2>100% Satisfied Customers </h2>
+						</div>						
+						<h3>Already have an Account, Login Here</h3>
+						<p>Click the link below to sign in</p>
+						<div class="drop-line bottom-shadow"></div>
+						<a title="sign in" href="{{ url_for('login')}}" class="btn btn-default">sign in</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endblock %}

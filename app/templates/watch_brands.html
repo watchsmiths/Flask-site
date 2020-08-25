@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block content %}
+	<!-- Page Breadcrumb -->
+	<!-- container -->
+	<div class="container">
+		<div class="page-breadcrumb">
+			<ol class="breadcrumb">
+				<li><a title="Home" href="{{ url_for('home') }}">Home</a></li>
+				<li class="active">Watch Brands</li>
+			</ol>
+			<div class="return-home-link pull-right">
+				<a title="Return to home page" href="{{ url_for('home') }}">return to home page</a>
+			</div>
+		</div>
+		<div class="page-header ow-bottom-padding categories">
+			<h3>Watch Brands</h3>
+			<br>
+			<br>
+			<br>
+		</div><!-- Section Header /- -->
+	</div><!-- container /- -->
+	<!-- Page Breadcrumb /- -->
+	
+	<!-- Category Section -->
+	<div id="category-section" class="category-section categories">
+		<!-- container -->
+		<div class="container">
+			<!-- category box main -->
+			{% for brands in brandnames | batch(4, '&nbsp;' ) %}
+			<div class="category-box-main">
+				<!-- col-md-3 -->
+				{% for brand in brands %}
+				<div class="col-md-3 col-sm-3 col-xs-6">
+					<div class="category-box">
+						<a title="{{ brand.name }}" href="{{ url_for('watchbrand', watch_brand=brand.name )}}">
+							{% if brand.name == 'Audemars Piguet' %}
+							<img src="{{ url_for('static', filename='images/category/AP.jpg') }}" alt="cat-img" />
+							{% elif brand.name == 'Breitling' %}
+							<img src="{{ url_for('static', filename='images/category/breitling.jpg') }}" alt="cat-img" />
+							{% elif brand.name == 'Hublot' %}
+							<img src="{{ url_for('static', filename='images/category/hublot.jpg') }}" alt="cat-img" />
+							{% elif brand.name == 'Omega' %}
+							<img src="{{ url_for('static', filename='images/category/omega.jpg') }}" alt="cat-img" />
+							{% elif brand.name == 'Patek Philippe' %}
+							<img src="{{ url_for('static', filename='images/category/patek.jpg') }}" alt="cat-img" />
+							{% elif brand.name == 'Piaget' %}
+							<img src="{{ url_for('static', filename='images/category/piaget.jpg') }}" alt="cat-img" />
+							{% elif brand.name == 'Rolex' %}
+							<img src="{{ url_for('static', filename='images/category/rolex.jpg') }}" alt="cat-img" />
+							{% elif brand.name == 'Sale' %}
+							<img src="{{ url_for('static', filename='images/category/sale.jpg') }}" alt="cat-img" />
+							{% endif %}
+							<span>{{ brand.name }}</span>
+							<div class="cat-hover"></div>
+						</a>
+					</div>
+				</div>
+
+				{% endfor %}
+			</div>
+			<!-- category box main /- -->
+			{% endfor %}
+		</div><!-- container /- -->
+	</div><!-- Category Section /- -->
+	
+    {% endblock %}

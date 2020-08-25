@@ -1,0 +1,152 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/*CSS*/
+
+.top-header .col-md-6:not(.top-social) {
+    text-align: center;
+}
+
+.top-logo {
+	padding: 0px 1em 25px;
+	border-bottom: 3px Solid #f0eeeb;
+}
+
+.header-mobile-login {
+	float: right;
+}
+
+.cart-dropdown{
+	visibility: hidden
+	
+}
+
+.cart-link:hover > .cart-dropdown {
+	visibility: visible;
+}
+
+.product-filter-box {
+	border: none;
+}
+
+.product-filter-box > .col-md-4 {
+	border: 2px solid #dad5cd;
+}
+
+.watch-header {
+	margin: 0;
+}
+
+#newsletter-discount {
+	font-weight: bold;
+    color: #b3aa9b;
+	margin-top: 10px;
+	font-family: 'Playfair Display', serif;
+}
+
+/*icon for address in footer*/
+.address {
+	background-image: url("../images/icon/location-icon.png")
+}
+
+/*border on bottom for div - media query will change for smaller screens (min-width:991px)*/
+.payment-methods div{
+	border-bottom: 1px solid #beb2a6;
+	padding: 5px 0px;
+}
+
+.payment-methods > div > a > svg {
+    max-height: 40px;
+	vertical-align: middle;
+}
+
+.widget {
+	text-align: center;
+}
+
+.widget ul {
+	list-style-type: none;
+}
+
+.widget li a:hover {
+	color: #887C71;
+	text-decoration: underline;
+	text-decoration-color: #887C71;
+}
+
+.widget_left {
+	border-bottom: 1px solid #e7e7e7;
+	border-right: none;
+	list-style-type: none;
+}
+
+.widget_right {
+	border-top: 1px solid #e7e7e7;
+	border-left: none;
+	list-style-type: none;
+}
+
+/* Media Queries */
+
+@media (min-width:319px) {
+	.top-menu {
+		text-align: right;
+		float: right;
+	}
+}
+
+@media (max-width:650px){
+	.header-mobile-login {
+		font-size: 0.65em;
+	}
+	.page-banner > h1 {
+		font-size: 1.9em;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.widget-section .container {
+		width: 100%;
+		background-image: url("../images/icon/map-bg.png");
+		background-repeat: repeat-x;
+	}
+	.widget_about {
+		background-image: none;
+	}
+}
+
+@media (max-width:992px) {
+	.header-login {
+		display: none;
+	}
+}
+
+@media (min-width: 768px) {
+
+	.widget_right {
+		border-top: none;
+		border-left: 1px solid #e7e7e7;
+	    
+	}
+	
+	.widget_left {
+		border-bottom: none;
+		border-right: 1px solid #e7e7e7;
+	}
+	
+}
+
+@media (min-width: 992px){
+	
+	.payment-methods div {
+		border-right: 1px solid #beb2a6;
+		border-bottom: none;
+	}
+	.header-mobile-login {
+			display: none;
+		}
+}
+
+
+
+

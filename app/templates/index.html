@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+{% block content %}
+	<!-- Slider Section -->
+	<div id="slider-section" class="slider-section">
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2" class="active"></li>
+			</ol>
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item">
+					<img src="{{ url_for('static', filename='images/products/Rolex banner.png') }}" alt="slide-1">
+					<div class="container">
+						<div class="slider-box">
+							<h3>Rolex Collection</h3>
+							<h2>New Stock</h2>
+							<p>Rolex watches are crafted from the finest raw materials and assembled with scrupulous attention to detail. </p>
+							<button class="btn">View</button>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<img src="{{ url_for('static', filename='images/slider/slide-1.jpg') }}" alt="slide-1">
+					<div class="container">
+						<div class="slider-box">
+							<h3>Sell your Watch</h3>
+							<h2>Fresh Fall Styles</h2>
+							<p>Watch Valuations made and part exchange available on selected watches</p>
+							<button class="btn" onclick="location.href='{{ url_for('sellwatch') }}';">Button</button>
+						</div>
+					</div>
+				</div>
+				<div class="item active">
+					<img src="{{ url_for('static', filename='images/watchbannerbb.png') }}" alt="slide-2">
+					<div class="container">
+						<div class="slider-box">
+							<h3>Sale Items</h3>
+							<h2>Fresh Fall Styles</h2>
+							<p>Nam ac egestas est. Mauris et pulvinar Alisesus, at tincidunt lorem maecenas tristique sit amet odio sit amet. </p>
+							<button class="btn">Button</button>
+						</div>
+					</div>
+				</div>		
+			</div>
+			<!-- Controls -->
+			<a title="Previous" class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				<span class="fa fa-angle-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a title="Next" class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				<span class="fa fa-angle-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+	<!-- Slider Section /- -->
+	
+	<!-- Category Section -->
+	<div id="category-section" class="category-section bottom-shadow">
+		<!-- container -->
+		<div class="container">
+			<div class="col-md-3 categories-title col-sm-4">
+				<h3>Watch Sourcing</h3>
+				<p>Get in Contact with your request</p>
+			</div>
+			<div class="col-md-6 col-sm-4">
+				<h3>Wide Collection</h3>
+				<h4>New and Second Hand Models Available</h4>
+			</div>
+			<div class="col-md-3 col-sm-4 categories-title">
+				<h3>Bespoke Collection</h3>
+				<p>Available to Order </p>
+			</div>
+			
+			<!-- Feature Product -->
+			<section id="featured-products" class="featured-products bottom-shadow">
+				<!-- container -->
+				<div class="container">
+					<!-- Section Header -->
+					<div class="section-header">
+						<h3>Featured products</h3>
+						<p>Some of Our Bespoke Timepieces Available to Order</p>
+					</div><!-- Section Header /- -->
+					
+				</div><!-- container /- -->
+			</section>
+			<!-- Feature Product /- -->
+
+			<div class="category-box-main categories-slider animated slideInRight">
+				<!-- Owl Carousel -->
+				<div id="categories-list" class="owl-carousel owl-theme our-partner">
+					<div class="item">						
+						<div class="category-box">
+							<a title="#" href="#">
+								<img src="{{ url_for('static', filename='images/category/cat-img-1.jpg') }}" alt="cat-img" />
+								<span>Women’s Wear</span>
+								<div class="cat-hover"></div>
+							</a>
+						</div>
+					</div>
+					<div class="item">
+						<div class="category-box">
+							<a title="#" href="#">
+								<img src="{{ url_for('static', filename='images/category/cat-img-2.jpg') }}" alt="cat-img"/>
+								<span>Accessories </span>
+								<div class="cat-hover"></div>
+							</a>
+						</div>
+					</div>
+					<div class="item">
+						<div class="category-box">
+							<span class="new">New</span>
+							<a title="#" href="#">
+								<img src="{{ url_for('static', filename='images/category/cat-img-3.jpg') }}" alt="cat-img"/>
+								<span>Kids Wear</span>
+								<div class="cat-hover"></div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- container /- -->
+	</div><!-- Category Section /- -->
+	
+	{% endblock %}
