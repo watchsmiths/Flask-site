@@ -96,7 +96,7 @@ def watchbrand(watch_brand):
             'discount': ','
         },
     ]
-    
+
     if watch_brand not in brands():
         abort(404)
     else:
