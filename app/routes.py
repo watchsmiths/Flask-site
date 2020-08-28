@@ -3,8 +3,8 @@ import requests, os
 from PIL import Image
 
 from app import app, db, bcrypt, forms
-from .forms import RegistrationForm, LoginForm
-from .models import User 
+# from .forms import RegistrationForm, LoginForm
+# from .models import User 
 
 
 @app.route('/', methods=["GET", "POST"])
@@ -97,7 +97,7 @@ def watchbrand(watch_brand):
         },
     ]
     
-    if watch_brand not in brands.name():
+    if watch_brand not in brands():
         abort(404)
     else:
         return render_template('brandpage.html', watch_brand=watch_brand)
