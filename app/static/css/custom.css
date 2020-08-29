@@ -47,7 +47,7 @@
 	font-family: 'Playfair Display', serif;
 }
 
-.dropdown-menu li {
+.dropdown-menu li a{
 	text-align: center;
 }
 
