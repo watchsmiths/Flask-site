@@ -17,8 +17,7 @@
 } */
 
 .cart-dropdown{
-	visibility: hidden
-	
+	visibility: hidden;
 }
 
 .cart-link:hover > .cart-dropdown {
@@ -46,6 +45,10 @@
     color: #b3aa9b;
 	margin-top: 10px;
 	font-family: 'Playfair Display', serif;
+}
+
+.dropdown-menu li {
+	text-align: center;
 }
 
 /*icon for address in footer*/
