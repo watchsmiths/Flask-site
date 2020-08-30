@@ -3,7 +3,7 @@ import requests, os
 from PIL import Image
 
 from app import app, db, bcrypt, forms
-from .forms import Sellwatch
+from .forms import Sellwatch, Contact
 # from .models import User 
 
 
@@ -111,9 +111,10 @@ def sellwatch():
 
     return render_template('sell_watch.html', title = 'Sell Your Watch', form=form)
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
-    return render_template('contact.html', title = 'Contact Us')
+    form = Contact()
+    return render_template('contact.html', title = 'Contact Us', form=form)
 
 
 # @app.route('/newsletter', methods=['POST'])

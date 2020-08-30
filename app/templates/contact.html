@@ -27,33 +27,29 @@
 					<!-- Contact Form -->
 					<div class="contact-form">
 						<form class="form-horizontal ">
+							{{ form.hidden_tag() }}
 							<div class="form-group">
-								<label for="name" class="col-md-4">Your Name</label>
 								<div class="col-md-8">
-									<input type="text" class="form-control"  id="name" placeholder="enter your name" required />
+									{{ form.yourname.label (class="col-md-4") }}
+									{{ form.yourname(required='DataRequired', class="form-control col-md-8", id='name', placeholder='Enter Your Name') }}
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-md-4">Email</label>
 								<div class="col-md-8">
-									<input type="email" class="form-control" id="txt_email" placeholder="enter your email" required />
+									{{ form.email.label (class="col-md-4")}}
+									{{ form.email(required='DataRequired', class="form-control col-md-8", id='txt_email', placeholder='Enter Your Email') }}
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="phonenumber" class="col-md-4">Phone Number</label>
 								<div class="col-md-8">
-									<input type="text" class="form-control" id="phonenumber" placeholder="enter your contact no.">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="comment" class="col-md-4">Your Comment</label>
-								<div class="col-md-8">
-									<textarea class="form-control" id="comment" rows="2"></textarea>
+									{{ form.description.label (class="col-md-4") }}
+									{{ form.description(class="form-control", id='comment', placeholder='Enter Your Query Here') }}
 								</div>
 							</div>
 							<div class="drop-line bottom-shadow"></div>
 							<div class="form-group">
-								<a title="Back to Shop" href="{{ url_for('home')}}" class="pull-left">Back to Shop</a>	
+								<a title="Back to Shop" href="{{ url_for('home')}}" class="pull-left">Back to Shop</a>
+								{{ form.submit() }}	
 								<input type="submit" value="submit" class="btn btn-default  pull-right">
 							</div>
 						</form>
