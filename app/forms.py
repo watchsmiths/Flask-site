@@ -23,6 +23,11 @@ class Contact(FlaskForm):
     description = TextAreaField('Brief Description of item', [validators.optional(), validators.Length(min= 14, max=500)])
     submit = SubmitField('Submit')
 
+class newsletter(FlaskForm):
+    email = EmailField('Email Address', [validators.DataRequired(), validators.Length(min=6, max=35), validators.Email("This field requires a valid email address")])
+    
+
+
 # class RegistrationForm(FlaskForm):
 #     firstname = StringField('First Name', validators=[Length(min=4, max=25)])
 #     lastname = StringField('Last Name', validators=[Length(min=4, max=25)])
@@ -35,6 +40,6 @@ class Contact(FlaskForm):
 #     email = StringField('Email Address', validators=[Length(min=6, max=35), Email()])
 #     password = PasswordField('New Password', validators=[DataRequired()])
 
-# class newsletter(FlaskForm)
+
 
 

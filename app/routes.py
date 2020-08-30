@@ -3,13 +3,90 @@ import requests, os
 from PIL import Image
 
 from app import app, db, bcrypt, forms
-from .forms import Sellwatch, Contact
+from .forms import Sellwatch, Contact, newsletter
 # from .models import User 
 
 
 @app.route('/', methods=["GET", "POST"])
 def home():
-    return render_template('index.html')
+    newsletter_form = newsletter()
+    return render_template('index.html', newsletter_form=newsletter_form)
+
+@app.route('/about')
+def about():
+    newsletter_form=newsletter()
+    return render_template('about.html', title = 'About Us', newsletter_form=newsletter_form)
+
+@app.route('/brands')
+def brands():
+    brands = [
+        {
+            'name': 'Audemars Piguet'
+        },
+        {
+            'name': 'Breitling'
+        },
+        {
+            'name': 'Hublot'
+        },
+        {
+            'name': 'Omega'
+        },
+        {
+            'name': 'Patek Philippe'
+        },
+        {
+            'name': 'Piaget'
+        },
+        {
+            'name': 'Rolex'
+        },
+        {
+            'name': 'Sale'
+        },
+    ]
+    newsletter_form= newsletter()
+    return render_template('watch_brands.html', title='Brands', brandnames=brands, newsletter_form=newsletter_form)
+
+@app.route('/brands/<watch_brand>')
+def watchbrand(watch_brand):
+    newsletter_form = newsletter()
+    watches = [
+        {
+            'Brand': '',
+            'name': '',
+            'price': '',
+            'discount': ','
+        },
+    ]
+
+    if watch_brand not in brands():
+        abort(404)
+    else:
+        return render_template('brandpage.html', watch_brand=watch_brand, newsletter_form=newsletter_form)
+   
+
+@app.route('/sale')
+def sale():
+    newsletter_form = newsletter()
+    return render_template('sale.html', title = 'Sale', newsletter_form=newsletter_form)
+
+@app.route('/sell_watch', methods=['GET', 'POST'])
+def sellwatch():
+    form = Sellwatch() 
+    newsletter_form=newsletter()
+    return render_template('sell_watch.html', title = 'Sell Your Watch', form=form, newsletter_form=newsletter_form)
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    form = Contact()
+    newsletter_form=newsletter()
+    return render_template('contact.html', title = 'Contact Us', form=form, newsletter_form=newsletter_form)
+
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('404.html'), 404
+
 
 # @app.route('/account')
 # def account():
@@ -47,83 +124,3 @@ def home():
 #         else:
 #             flash('Wrong Password, please try again', 'danger')
 #     return render_template('admin/login.html', form=form, title="login")
-
-
-
-@app.route('/about')
-def about():
-    return render_template('about.html', title = 'About Us')
-
-@app.route('/brands')
-def brands():
-    brands = [
-        {
-            'name': 'Audemars Piguet'
-        },
-        {
-            'name': 'Breitling'
-        },
-        {
-            'name': 'Hublot'
-        },
-        {
-            'name': 'Omega'
-        },
-        {
-            'name': 'Patek Philippe'
-        },
-        {
-            'name': 'Piaget'
-        },
-        {
-            'name': 'Rolex'
-        },
-        {
-            'name': 'Sale'
-        },
-    ]
-    return render_template('watch_brands.html', title='Brands', brandnames=brands)
-
-@app.route('/brands/<watch_brand>')
-def watchbrand(watch_brand):
-    watches = [
-        {
-            'Brand': '',
-            'name': '',
-            'price': '',
-            'discount': ','
-        },
-    ]
-
-    if watch_brand not in brands():
-        abort(404)
-    else:
-        return render_template('brandpage.html', watch_brand=watch_brand)
-   
-
-@app.route('/sale')
-def sale():
-    return render_template('sale.html', title = 'Sale')
-
-@app.route('/sell_watch', methods=['GET', 'POST'])
-def sellwatch():
-    form = Sellwatch() 
-
-    return render_template('sell_watch.html', title = 'Sell Your Watch', form=form)
-
-@app.route('/contact', methods=['GET', 'POST'])
-def contact():
-    form = Contact()
-    return render_template('contact.html', title = 'Contact Us', form=form)
-
-
-# @app.route('/newsletter', methods=['POST'])
-# def newsletter():
-#     email = request.form['newsletter-email']
-#     email_addresses.append(email)
-#     print(email_addresses)
-#     return redirect('/')
-
-@app.errorhandler(404)
-def not_found_error(error):
-    return render_template('404.html'), 404
