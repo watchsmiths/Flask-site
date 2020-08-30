@@ -12,4 +12,7 @@ class User(db.Model):
         return '<User %r>' % self.firstname
 
 
+# class sellwatch(db.Model):
+#     # id = db.Column(db.Integer)
+
 db.create_all()

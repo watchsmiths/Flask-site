@@ -3,15 +3,13 @@ import requests, os
 from PIL import Image
 
 from app import app, db, bcrypt, forms
-# from .forms import RegistrationForm, LoginForm
+from .forms import Sellwatch
 # from .models import User 
 
 
 @app.route('/', methods=["GET", "POST"])
 def home():
     return render_template('index.html')
-
-
 
 # @app.route('/account')
 # def account():
@@ -84,7 +82,7 @@ def brands():
             'name': 'Sale'
         },
     ]
-    return render_template('watch_brands.html', title = 'Brands', brandnames=brands)
+    return render_template('watch_brands.html', title='Brands', brandnames=brands)
 
 @app.route('/brands/<watch_brand>')
 def watchbrand(watch_brand):
@@ -107,9 +105,11 @@ def watchbrand(watch_brand):
 def sale():
     return render_template('sale.html', title = 'Sale')
 
-@app.route('/sell_watch')
+@app.route('/sell_watch', methods=['GET', 'POST'])
 def sellwatch():
-    return render_template('sell_watch.html', title = 'Sell Your Watch')
+    form = Sellwatch() 
+
+    return render_template('sell_watch.html', title = 'Sell Your Watch', form=form)
 
 @app.route('/contact')
 def contact():
