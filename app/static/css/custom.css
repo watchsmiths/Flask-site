@@ -16,6 +16,11 @@
 	float: right;
 } */
 
+.about-header {
+	font-style: italic; 
+	background-color: rgba(0,0,0,0.5);
+}
+
 .cart-dropdown{
 	visibility: hidden;
 }

@@ -10,11 +10,17 @@ from .forms import Sellwatch, Contact, newsletter
 @app.route('/', methods=["GET", "POST"])
 def home():
     newsletter_form = newsletter()
+    if newsletter_form.validate_on_submit():
+        flash(f"Thanks. You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}")
+    
     return render_template('index.html', newsletter_form=newsletter_form)
 
 @app.route('/about')
 def about():
     newsletter_form=newsletter()
+    if newsletter_form.validate_on_submit():
+        flash(f"Thanks. You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}")
+    
     return render_template('about.html', title = 'About Us', newsletter_form=newsletter_form)
 
 @app.route('/brands')
@@ -46,11 +52,17 @@ def brands():
         },
     ]
     newsletter_form= newsletter()
+    if newsletter_form.validate_on_submit():
+        flash(f"Thanks. You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}")
+    
     return render_template('watch_brands.html', title='Brands', brandnames=brands, newsletter_form=newsletter_form)
 
 @app.route('/brands/<watch_brand>')
 def watchbrand(watch_brand):
     newsletter_form = newsletter()
+    if newsletter_form.validate_on_submit():
+        flash(f"Thanks. You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}")
+    
     watches = [
         {
             'Brand': '',
@@ -69,18 +81,28 @@ def watchbrand(watch_brand):
 @app.route('/sale')
 def sale():
     newsletter_form = newsletter()
+    if newsletter_form.validate_on_submit():
+        flash(f"Thanks. You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}")
+    
     return render_template('sale.html', title = 'Sale', newsletter_form=newsletter_form)
 
 @app.route('/sell_watch', methods=['GET', 'POST'])
 def sellwatch():
     form = Sellwatch() 
     newsletter_form=newsletter()
+    if newsletter_form.validate_on_submit():
+        flash(f"Thanks. You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}")
+    
     return render_template('sell_watch.html', title = 'Sell Your Watch', form=form, newsletter_form=newsletter_form)
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     form = Contact()
     newsletter_form=newsletter()
+    
+    if form.validate_on_submit():
+        flash(f'Thank you for your enquiry, confirmation of recipt will be sent to {form.email.data}. We aim to get back to you shortly', "success")
+        return redirect(url_for('home'))
     return render_template('contact.html', title = 'Contact Us', form=form, newsletter_form=newsletter_form)
 
 @app.errorhandler(404)
