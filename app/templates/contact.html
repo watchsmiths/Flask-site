@@ -27,7 +27,7 @@
 				<div class="col-md-12 col-sm-12">
 					<!-- Contact Form -->
 					<div class="contact-form">
-						<form class="form-horizontal ">
+						<form class="form-horizontal">
 							{{ form.hidden_tag() }}
 							<div class="form-group">
 								<div class="col-md-8">
@@ -49,9 +49,8 @@
 							</div>
 							<div class="drop-line bottom-shadow"></div>
 							<div class="form-group">
-								<a title="Back to Shop" href="{{ url_for('home')}}" class="pull-left">Back to Shop</a>
-								{{ form.submit() }}	
-								<input type="submit" value="submit" class="btn btn-default  pull-right">
+								<a title="Back to Shop" href="{{ url_for('brands')}}" class="pull-left">Back to Shop</a>
+								{{ form.submit(class="btn btn-default pull-right") }}	
 							</div>
 						</form>
 					</div><!-- Contact Form /- -->
