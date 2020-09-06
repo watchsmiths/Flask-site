@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- Page Breadcrumb -->
+	<!-- container -->
+	<div class="container">
+		<div class="page-breadcrumb">
+			<ol class="breadcrumb">
+				<li><a title="Home" href="{{ url_for('home') }}">Home</a></li>
+				<li><a title="Watches" href="#">Watches</a></li>
+				<li class="active">Rolex</li>
+			</ol>
+			<div class="return-home-link pull-right">
+				<a title="Return to home page" href="{{ url_for('home') }}">return to home page</a>
+			</div>
+		</div>
+	</div><!-- container /- -->
+	<!-- Page Breadcrumb /- -->
+	
+	<!-- Single Product -->
+	<div id="single-product" class="single-product">
+		<!-- Container -->
+		<div class="container">
+			<div class="row">
+				<!-- col-md-7 -->
+				<div class="col-md-7">
+					<div class="large-product">
+						<div id="about-carousel" class="col-md-3 col-sm-3 col-xs-3 flexslider product-thumb no-padding">	
+                            <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                                <ul class="slides" style="width: 602%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+                                    <li class="flex-active-slide" style="width: 126px; float: left; display: block;">
+                                        <img src="{{ url_for('static', filename='images/single-product/product-thumb-1.jpg') }}" alt="product-thumb" draggable="false">
+                                    </li>
+                                    <li style="width: 126px; float: left; display: block;">
+                                        <img src="{{ url_for('static', filename='images/single-product/product-thumb-2.jpg') }}" alt="product-thumb" draggable="false">
+                                    </li>
+                                    <li style="width: 126px; float: left; display: block;">
+                                        <img src="{{ url_for('static', filename='images/single-product/product-thumb-3.jpg') }}" alt="product-thumb" draggable="false">
+                                    </li>								
+                                </ul>
+                            </div>
+                            <ul class="flex-direction-nav">
+                                <li class="flex-nav-prev">
+                                    <a class="flex-prev flex-disabled" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="flex-nav-next">
+                                    <a class="flex-next" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </div>
+						<div id="about-slider" class="flexslider col-md-9 col-sm-9 col-xs-9 product-slider">
+							<ul class="slides">
+								<li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;">
+									<img class="magniflier" src="{{ url_for('static', filename='images/single-product/product-large-1.jpg') }}" alt="product-thumb" draggable="false">
+								</li>
+								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+									<img class="magniflier" src="{{ url_for('static', filename='images/single-product/product-large-2.jpg' ) }}" alt="product-thumb" draggable="false">
+								</li>
+								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+									<img class="magniflier" src="{{ url_for('static', filename='images/single-product/product-large-3.jpg') }}" alt="product-thumb" draggable="false">
+								</li>
+								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+									<img class="magniflier" src="{{ url_for('static', filename='images/single-product/product-large-2.jpg') }}" alt="product-thumb" draggable="false">
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- Section Header /- -->
+					<!-- Section Header /- -->
+					<div class="category-box-main product-box-main">
+						<div class="drop-line bottom-shadow"></div>
+					</div>
+				</div><!-- col-md-7 /- -->
+				
+				<!-- col-md-5 -->
+				<div class="col-md-5 single-product-sidebar">
+					<div class="page-header">
+						<h3>ROLEX SUBMARINER 40MM, STAINLESS STEEL, BLACK DIAL – 116610LN</h3>
+					</div>
+                    <br>
+                    <br>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing Donec Nulla lectus nunc, efficitur dui vitae, viverra finibus massa Vestibulum molestie accumsan.</p>
+					<ul class="single-side-widget top-social ow-left-padding">
+						<li><img src="{{ url_for('static', filename='images/summary/gucci-icon.png') }}" alt="gucci"></li>
+					</ul>
+					<aside class="widget widget_recent_post"style="padding-top: 0px;">						
+						<div role="tabpanel">
+							<!-- Nav tabs -->
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<div id="pricing" class="tab-pane active" role="tabpanel">
+									<div class="shopping-cart-table">
+										<table>
+											<tbody>
+												<tr class="cart-subtotal">
+													<th>Product Price</th>
+													<td><span class="amount">£19.95</span></td>
+												</tr>
+												<tr class="cart-subtotal">
+													<th>Product Quantity</th>
+													<td>
+														<select class="minimal">
+															<option>01</option>
+															<option>02</option>
+															<option>03</option>
+														</select>
+													</td>
+												</tr>
+												<tr class="order-total">
+													<th>Sub Total Price</th>
+													<td><strong><span class="total-amount">£19.95</span></strong> </td>
+												</tr>
+											</tbody>
+										</table>
+										<ul>
+											<li><a title="Add Cart" href="#">Add to Cart</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</aside>
+				</div>
+				<!-- col-md-5 /- -->
+			</div>
+		</div><!-- Container /- -->
+	</div>
+	<!-- Single Product /- -->
+{% endblock %}

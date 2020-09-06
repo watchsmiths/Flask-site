@@ -159,6 +159,13 @@ def watchbrand(watch_brand):
     else:
         return render_template('brandpage.html', watch_brand=watch_brand, newsletter_form=newsletter_form)
    
+@app.route('/product', methods=['GET','POST'])
+def product():
+    newsletter_form = newsletter()
+    if newsletter_form.validate_on_submit():
+        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
+    
+    return render_template('product.html', title='Product', newsletter_form=newsletter_form)
 
 @app.route('/sale', methods=['GET','POST'])
 def sale():

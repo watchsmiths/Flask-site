@@ -102,6 +102,11 @@
 	list-style-type: none;
 }
 
+.back-to-top {
+    display: none;
+	position: fixed;
+}
+
 /* Media Queries */
 
 @media (min-width:319px) {
