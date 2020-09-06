@@ -71,17 +71,15 @@
 		var height	=	$(window).height();
 
 		/*** set sticky menu ***/
-		if( scroll >= height -591 )
+		if( scroll >= height -500 )
 		{
-			$('.menu-block').addClass("navbar-fixed-top").delay( 2000 ).fadeIn();
-		}
-		else if ( scroll <= height )
-		{
-			$('.menu-block').removeClass("navbar-fixed-top");
+			$('.menu-block').addClass("navbar-fixed-top");
+            $('#header').next('div').css({"padding-top": "81px"});
 		}
 		else
 		{
 			$('.menu-block').removeClass("navbar-fixed-top");
+            $('#header').next('div').css({"padding-top": "0px"});
 		} // set sticky menu - end
 	});	
 	/* document.ready /- */		

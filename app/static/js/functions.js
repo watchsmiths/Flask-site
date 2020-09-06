@@ -68,22 +68,22 @@
 	/* Event - Document Ready /- */	
 	$(document).ready(function($)
 	{
-		var scroll	=	$(window).scrollTop();
-		var height	=	$(window).height();
+		// var scroll	=	$(window).scrollTop();
+		// var height	=	$(window).height();
 
-		/*** set sticky menu ***/
-		if( scroll >= height -500 )
-		{
-			$('.menu-block').addClass("navbar-fixed-top").delay( 2000 ).fadeIn();
-		}
-		else if ( scroll <= height )
-		{
-			$('.menu-block').removeClass("navbar-fixed-top");
-		}
-		else
-		{
-			$('.menu-block').removeClass("navbar-fixed-top");
-		} // set sticky menu - end
+		// /*** set sticky menu ***/
+		// if( scroll >= height -500 )
+		// {
+		// 	$('.menu-block').addClass("navbar-fixed-top").delay( 2000 ).fadeIn();
+		// }
+		// else if ( scroll <= height )
+		// {
+		// 	$('.menu-block').removeClass("navbar-fixed-top");
+		// }
+		// else
+		// {
+		// 	$('.menu-block').removeClass("navbar-fixed-top");
+		// } // set sticky menu - end
 
 		$('.navbar-nav li a, .logo-block a').on('click', function(event)
 		{
