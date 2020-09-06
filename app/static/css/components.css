@@ -895,7 +895,7 @@
 }
 
 .widget_recent_post .nav.bottom-shadow:after {
-	background-image: url("../images/recent-post-shadow.png");
+	background-image: url("../images/generic/recent-post-shadow.png");
 }
 
 .widget_recent_post .nav li a {

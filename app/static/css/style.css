@@ -203,7 +203,7 @@ a {
 }
 
 .bottom-shadow:after {
-	background-image: url("../images/shadow.png");
+	background-image: url("../images/generic/shadow.png");
     background-repeat: no-repeat;
 	background-position: center;
     bottom: 21px;
@@ -268,7 +268,7 @@ a {
 
 .section-header > h3,
 .page-header > h3 {
-	background-image: url("../images/section-header-bg.png");
+	background-image: url("../images/generic/section-header-bg.png");
 	background-repeat: no-repeat;
 	background-position: center;
 	font-size: 20px;
@@ -290,7 +290,7 @@ a {
 }
 
 .page-header > h3 {
-	background-image: url("../images/page-header-bg.png");
+	background-image: url("../images/generic/page-header-bg.png");
 	font-size: 30px;
 	font-weight: normal;
 }
@@ -2700,7 +2700,7 @@ input.qtyplus, input.qtyminus {
 }
 
 .single-side-widget {
-	background-image: url("../images/page-header-bg.png");
+	background-image: url("../images/generic/page-header-bg.png");
 	background-repeat: no-repeat;
 	background-position: center;
 	padding: 20px 0;
