@@ -23,6 +23,7 @@
 .about-header {
 	font-style: italic; 
 	background-color: rgba(0,0,0,0.5);
+	position: relative;
 }
 
 .cart-dropdown{
@@ -43,6 +44,10 @@
 
 .watch-header {
 	margin: 0;
+}
+
+.page-breadcrumb { 
+	margin-top: 50px;
 }
 
 .newsletter_form {

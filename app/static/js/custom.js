@@ -13,12 +13,12 @@
 		if( scroll >= 92 )
 		{
 			$('.menu-block').addClass("navbar-fixed-top");
-            $('#header').next('div').css({"padding-top": "81px"});
+            $('#header').next('div').css({"margin-top": "81px"});
 		}
 		else
 		{
 			$('.menu-block').removeClass("navbar-fixed-top");
-            $('#header').next('div').css({"padding-top": "0px"});
+            $('#header').next('div').css({"margin-top": "0px"});
 		} // set sticky menu - end
 
 		if ($(this).scrollTop() >= 300)
@@ -74,12 +74,12 @@
 		if( scroll >= height -500 )
 		{
 			$('.menu-block').addClass("navbar-fixed-top");
-            $('#header').next('div').css({"padding-top": "81px"});
+            $('#header').next('div').css({"margin-top": "81px"});
 		}
 		else
 		{
 			$('.menu-block').removeClass("navbar-fixed-top");
-            $('#header').next('div').css({"padding-top": "0px"});
+            $('#header').next('div').css({"margin-top": "0px"});
 		} // set sticky menu - end
 	});	
 	/* document.ready /- */		
