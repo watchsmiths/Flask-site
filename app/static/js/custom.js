@@ -21,9 +21,9 @@
             $('#header').next().css({"padding-top": "0px"});
 		} // set sticky menu - end
 
-		if ($(this).scrollTop() >= 300
+		if ($(this).scrollTop() >= 300)
 		{
-			// If page is scrolled more than 50px
+			// If page is scrolled more than px
 			$('#back-to-top').css({"display": "block"}).fadeIn(200);    // Fade in the arrow
 		}
 		else
