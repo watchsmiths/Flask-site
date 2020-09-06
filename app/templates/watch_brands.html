@@ -30,60 +30,27 @@
 			<div class="category-box-main">
 				<!-- col-md-3 -->
 				{% for brand in brands %}
-				<div class="col-md-3 col-sm-3 col-xs-6">
-					<div class="category-box">
-						{% if brand.name == 'Audemars Piguet' %}
-						<a title="{{ brand.name }}" href="{{ url_for('watchbrand', watch_brand=brand.name )}}">
-							<img src="{{ url_for('static', filename='images/category/AP.jpg') }}" alt="cat-img" />
-							<span>{{ brand.name }}</span>
-							<div class="cat-hover"></div>
-						</a>
-						{% elif brand.name == 'Breitling' %}
-						<a title="{{ brand.name }}" href="{{ url_for('watchbrand', watch_brand=brand.name )}}">
-							<img src="{{ url_for('static', filename='images/category/breitling.jpg') }}" alt="cat-img" />
-							<span>{{ brand.name }}</span>
-							<div class="cat-hover"></div>
-						</a>
-						{% elif brand.name == 'Hublot' %}
-						<a title="{{ brand.name }}" href="{{ url_for('watchbrand', watch_brand=brand.name )}}">
-							<img src="{{ url_for('static', filename='images/category/hublot.jpg') }}" alt="cat-img" />
-							<span>{{ brand.name }}</span>
-							<div class="cat-hover"></div>
-						</a>
-						{% elif brand.name == 'Omega' %}
-						<a title="{{ brand.name }}" href="{{ url_for('watchbrand', watch_brand=brand.name )}}">
-							<img src="{{ url_for('static', filename='images/category/omega.jpg') }}" alt="cat-img" />
-							<span>{{ brand.name }}</span>
-							<div class="cat-hover"></div>
-						</a>
-						{% elif brand.name == 'Patek Philippe' %}
-						<a title="{{ brand.name }}" href="{{ url_for('watchbrand', watch_brand=brand.name )}}">
-							<img src="{{ url_for('static', filename='images/category/patek.jpg') }}" alt="cat-img" />
-							<span>{{ brand.name }}</span>
-							<div class="cat-hover"></div>
-						</a>
-						{% elif brand.name == 'Piaget' %}
-						<a title="{{ brand.name }}" href="{{ url_for('watchbrand', watch_brand=brand.name )}}">
-							<img src="{{ url_for('static', filename='images/category/piaget.jpg') }}" alt="cat-img" />
-							<span>{{ brand.name }}</span>
-							<div class="cat-hover"></div>
-						</a>	
-						{% elif brand.name == 'Rolex' %}
-						<a title="{{ brand.name }}" href="{{ url_for('watchbrand', watch_brand=brand.name )}}">
-							<img src="{{ url_for('static', filename='images/category/rolex.jpg') }}" alt="cat-img" />
-							<span>{{ brand.name }}</span>
-							<div class="cat-hover"></div>
-						</a>
-						{% elif brand.name == 'Sale' %}
-						<a title="{{ brand.name }}" href="{{ url_for('sale')}}">
-							<img src="{{ url_for('static', filename='images/category/sale.jpg') }}" alt="cat-img" />
-							<span>{{ brand.name }}</span>
-							<div class="cat-hover"></div>
-						</a>
-						{% endif %}
-					</div>
-				</div>
-
+					{% if brand.name == 'Sale' %}
+						<div class="col-md-3 col-sm-3 col-xs-6">
+							<div class="category-box">
+								<a title="{{ brand.name }}" href="{{ url_for('sale')}}">
+									<img src="static/images/category/{{ brand.image }}" alt="cat-img" />
+									<span>{{ brand.name }}</span>
+									<div class="cat-hover"></div>
+								</a>
+							</div>
+						</div>
+						{% else %}
+						<div class="col-md-3 col-sm-3 col-xs-6">
+							<div class="category-box">
+								<a title="{{ brand.name }}" href="{{ url_for('watchbrand', watch_brand=brand.name )}}">
+									<img src="static/images/category/{{ brand.image }}" alt="cat-img" />
+									<span>{{ brand.name }}</span>
+									<div class="cat-hover"></div>
+								</a>
+							</div>
+						</div>
+					{% endif %}
 				{% endfor %}
 			</div>
 			<!-- category box main /- -->

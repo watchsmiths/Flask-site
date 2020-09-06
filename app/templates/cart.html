@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- Page Breadcrumb -->
+	<!-- container -->
+	<div class="container">
+		<div class="page-breadcrumb">
+			<ol class="breadcrumb">
+				<li><a title="Home" href="#">Home</a></li>
+				<li class="active">Shopping Cart</li>
+			</ol>
+			<div class="return-home-link pull-right">
+				<a title="Return to home page" href="{{  url_for('home')  }}">return to home page</a>
+			</div>
+		</div>
+		<div class="page-header bottom-shadow">
+			<h3>Shopping Cart</h3>
+			<p>1 Products Selected</p>
+		</div><!-- Section Header /- -->
+	</div><!-- container /- -->
+	<!-- Page Breadcrumb /- -->
+	
+	<div class="page-wizard shopping-cart shopping-product-table">
+		<!-- container -->
+		<div class="container">
+			<!-- Shopping-cart-table -->
+			<div class="shopping-cart-table bottom-shadow">
+				<table class="shop_table cart">
+					<thead>
+						<tr>
+							<th class="product-name">Product</th>
+							<th class="product-description">Description</th>		
+							<th class="blank-space"></th>
+							<th class="product-price">Price</th>
+							<th class="product-quantity">Quantity</th>
+							<th class="product-subtotal">subtotal</th>
+							<th class="product-change">delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td data-title="Product" class="product-tdumbnail">
+								<a title="Summary" href="#"><img src="images/summary/summary-1.png" alt="summary"></a>
+							</td>
+							<td data-title="Description" class="product-description">
+								<a title="Order No" href="#">
+									<b>Fashionable Pink Top</b>
+									Product No. 10101987 - 26
+								</a>
+							</td>
+							<td data-title="" class="blank-space"></td>
+							<td data-title="Price" class="product-price">
+								<span class="amount">£3,200.00</span>
+							</td>
+							<td data-title="Quantity" class="product-quantity">
+								<div class="quantity">
+									<input type="button" value="+" id="qtyplus-1" class="qtyplus" data-field="quantity1">
+									<input type="text" name="quantity1" value="0" class="qty">
+									<input type="button" value="-" class="qtyminus" data-field="quantity1">
+								</div>
+							</td>
+							<td data-title="subtotal" class="product-subtotal">
+								<span class="amount">£ 3,200</span>
+							</td>
+							<td data-title="edit/delete" class="product-edit">
+								<a title="Trash Icon" href="#"><span class="product-delete"><i class="fa fa-trash-o"></i></span></a>
+							</td>
+						</tr>	
+						
+						
+					</tbody>
+				</table>				
+				<div class="shopping-cart-footer">
+					<a title="Continue Shopping" href="{{  url_for('home')  }}" class="btn btn-default">Continue Shopping</a>
+					<a title="Update Shopping Cart" href="#" class="btn btn-default">Update Shopping Cart</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Cart estimate -->
+	<div class="shopping-cart-estimate">
+		<!-- container -->
+		<div class="container">
+			<div class="row">
+				<!-- col-md-4 -->
+				<!-- col-md-4 /- -->
+				<!-- col-md-4 -->
+				<div class="col-md-8 col-sm-6">
+					<!-- section-header -->
+					<div class="section-header">
+						<h3>discount codes</h3>
+					</div><!-- Section Header /- -->
+					<div class="estimate-details shopping-cart-table coupon">
+						<h4>Enter your coupon code if you have</h4>
+						<form>
+							<div class="form-group">
+								<input type="text" name="" class="form-control" placeholder="">
+								<input type="submit" value="apply" class="btn">	
+							</div>
+						</form>
+					</div>
+                </div><!-- col-md-4 /- -->
+                <br>
+				<!-- col-md-4 -->
+				<div class="col-md-4 col-sm-6">
+					<div class="estimate-details shopping-cart-table">
+						<table>
+							<tbody>
+								<tr class="cart-subtotal">
+									<th>Subtotal</th>
+									<td><span class="amount">£3,200</span></td>
+								</tr>
+								<tr class="order-total">
+									<th>Grand Total</th>
+									<td><strong><span class="total-amount">£3,200</span></strong> </td>
+								</tr>
+							</tbody>
+						</table>
+						<button type="submit" class="btn btn-default">proceed to checkout</button>
+					</div>
+				</div><!-- col-md-4 /- -->
+			</div>
+		</div>
+	</div><!-- Cart estimate -->
+{% endblock %}

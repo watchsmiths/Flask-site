@@ -3,6 +3,10 @@
 
 /*CSS*/
 
+.flashes{ 
+	text-align: center;
+}
+
 .top-header .col-md-6:not(.top-social) {
     text-align: center;
 }
@@ -149,7 +153,7 @@
 }
 
 @media (min-width: 992px){
-	
+
 	.payment-methods div {
 		border-right: 1px solid #beb2a6;
 		border-bottom: none;

@@ -11,64 +11,146 @@ from .forms import Sellwatch, Contact, newsletter
 def home():
     newsletter_form = newsletter()
     if newsletter_form.validate_on_submit():
-        flash(f"Thanks. You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}")
+        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
     
     return render_template('index.html', newsletter_form=newsletter_form)
 
-@app.route('/about')
+@app.route('/about', methods=['GET','POST'])
 def about():
     newsletter_form=newsletter()
     if newsletter_form.validate_on_submit():
-        flash(f"Thanks. You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}")
+        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
     
     return render_template('about.html', title = 'About Us', newsletter_form=newsletter_form)
 
-@app.route('/brands')
+@app.route('/brands', methods=['GET','POST'])
 def brands():
     brands = [
         {
-            'name': 'Audemars Piguet'
+            'name': 'Audemars Piguet',
+            'image': 'AP.jpg'
         },
         {
-            'name': 'Breitling'
+            'name': 'Breitling',
+            'image': 'breitling.jpg'
         },
         {
-            'name': 'Hublot'
+            'name': 'Hublot',
+            'image': 'hublot.jpg'
         },
         {
-            'name': 'Omega'
+            'name': 'Omega',
+            'image': 'omega.jpg'
         },
         {
-            'name': 'Patek Philippe'
+            'name': 'Patek Philippe',
+            'image': 'patek.jpg'
         },
         {
-            'name': 'Piaget'
+            'name': 'Piaget',
+            'image': 'piaget.jpg'
         },
         {
-            'name': 'Rolex'
+            'name': 'Rolex',
+            'image': 'rolex.jpg'
         },
         {
-            'name': 'Sale'
+            'name': 'Sale',
+            'image': 'sale.jpg'
         },
     ]
     newsletter_form= newsletter()
     if newsletter_form.validate_on_submit():
-        flash(f"Thanks. You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}")
+        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
     
     return render_template('watch_brands.html', title='Brands', brandnames=brands, newsletter_form=newsletter_form)
 
-@app.route('/brands/<watch_brand>')
+@app.route('/brands/<watch_brand>', methods=['GET','POST'])
 def watchbrand(watch_brand):
     newsletter_form = newsletter()
     if newsletter_form.validate_on_submit():
-        flash(f"Thanks. You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}")
+        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
     
     watches = [
         {
             'Brand': '',
             'name': '',
             'price': '',
-            'discount': ','
+            'discount': '',
+            'image_1': '',
+            'image_2': '',
+            'image_3': '',
+            'image_4': ''
+        },
+        {
+            'Brand': '',
+            'name': '',
+            'price': '',
+            'discount': '',
+            'image_1': '',
+            'image_2': '',
+            'image_3': '',
+            'image_4': ''
+        },
+        {
+            'Brand': '',
+            'name': '',
+            'price': '',
+            'discount': '',
+            'image_1': '',
+            'image_2': '',
+            'image_3': '',
+            'image_4': ''
+        },
+        {
+            'Brand': '',
+            'name': '',
+            'price': '',
+            'discount': '',
+            'image_1': '',
+            'image_2': '',
+            'image_3': '',
+            'image_4': ''
+        },
+        {
+            'Brand': '',
+            'name': '',
+            'price': '',
+            'discount': '',
+            'image_1': '',
+            'image_2': '',
+            'image_3': '',
+            'image_4': ''
+        },
+        {
+            'Brand': '',
+            'name': '',
+            'price': '',
+            'discount': '',
+            'image_1': '',
+            'image_2': '',
+            'image_3': '',
+            'image_4': ''
+        },
+        {
+            'Brand': '',
+            'name': '',
+            'price': '',
+            'discount': '',
+            'image_1': '',
+            'image_2': '',
+            'image_3': '',
+            'image_4': ''
+        },
+        {
+            'Brand': '',
+            'name': '',
+            'price': '',
+            'discount': '',
+            'image_1': '',
+            'image_2': '',
+            'image_3': '',
+            'image_4': ''
         },
     ]
 
@@ -78,11 +160,11 @@ def watchbrand(watch_brand):
         return render_template('brandpage.html', watch_brand=watch_brand, newsletter_form=newsletter_form)
    
 
-@app.route('/sale')
+@app.route('/sale', methods=['GET','POST'])
 def sale():
     newsletter_form = newsletter()
     if newsletter_form.validate_on_submit():
-        flash(f"Thanks. You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}")
+        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
     
     return render_template('sale.html', title = 'Sale', newsletter_form=newsletter_form)
 
@@ -91,7 +173,7 @@ def sellwatch():
     form = Sellwatch() 
     newsletter_form=newsletter()
     if newsletter_form.validate_on_submit():
-        flash(f"Thanks. You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}")
+        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
     
     return render_template('sell_watch.html', title = 'Sell Your Watch', form=form, newsletter_form=newsletter_form)
 
@@ -105,9 +187,18 @@ def contact():
         return redirect(url_for('home'))
     return render_template('contact.html', title = 'Contact Us', form=form, newsletter_form=newsletter_form)
 
+@app.route('/cart', methods=['GET', 'POST'])
+def cart():
+    newsletter_form=newsletter()
+    if newsletter_form.validate_on_submit():
+        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
+    
+    return render_template('cart.html', title='Cart', newsletter_form=newsletter_form)
+
 @app.errorhandler(404)
 def not_found_error(error):
-    return render_template('404.html'), 404
+    newsletter_form=newsletter()
+    return render_template('404.html', newsletter_form=newsletter_form), 404
 
 
 # @app.route('/account')

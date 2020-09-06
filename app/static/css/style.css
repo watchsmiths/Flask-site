@@ -2410,9 +2410,9 @@ a {
 	line-height: 31px;
 	height: 31px;
 }
-input.qtyplus {
+/* input.qtyplus {
 	color: #000;
-}
+} */
 input.qtyplus,
 input.qtyminus {
 	font-size: 18px;
