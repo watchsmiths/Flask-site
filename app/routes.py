@@ -2,7 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 import requests, os
 from PIL import Image
 
-from app import app, db, bcrypt, forms
+from app import app, db, forms
+# from app import bcrypt
 from .forms import Sellwatch, Contact, newsletter
 # from .models import User 
 
