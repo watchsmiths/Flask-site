@@ -27,41 +27,48 @@
     
 
 
-
-    
-    <!-- logic= for watch in brand > display watch. if there are no watches in brand > display coming soon sign -->
-
-
 	<!-- Feature Product -->
 	<div id="featured-products" class="featured-products bottom-shadow">
 		<!-- container -->
-		<div class="container">			
+		<div class="container">
 			<div class="category-box-main product-box-main">
+				{% for watch in watches %}
 				<div class="col-md-3 col-sm-6 col-xs-6 main-product">
 					<div class="category-box product-box">
-						
+						{% if watch.sale == 'Yes' %}
+						<span class="sale">sale</span>
+						{% endif %}
 						<div class="inner-product">
-							<img src="{{ url_for('static', filename='images/featured/featured-1.jpg') }}" alt="featured-img"/>
+							<img src="/static/images/products/watch/{{ watch.brand }}/{{ watch.watch_id }}/thumb.svg" height='292px' width='292px' alt="{{ watch.name }}"/>
+
 							<div class="product-box-inner">
 								<ul>
-									<li><a title="Eye Icon" href="{{ url_for('static', filename='images/featured/featured-1.jpg') }}"><i class="fa fa-eye"></i></a></li>
-									
+									<li><a title="{{ watch.thumbname }}" href="/static/images/products/watch/{{ watch.brand }}/{{ watch.watch_id }}/thumb.png"><i class="fa fa-eye"></i></a></li>
 								</ul>
 								<a title="Add to cart" href="#" class="btn">add to cart</a>
 							</div>
 						</div>
 					</div>
-					<a title="Fashionable Pink Top" href="#" class="product-title">Fashionable Pink Top</a>
-					
-					<span class="amount"><del>&dollar;24.99</del> &dollar;19.99</span>
+					<a title="{{ watch.name }}" href="{{ url_for('product', watch_id = watch.watch_id ) }}" class="product-title">{{ watch.thumbname }}</a>
+					{% if watch.sale == 'Yes' %}
+					<span class="amount"><del>&pound;{{ watch.price }}</del> &pound;{{ watch.discount_price }}</span>
+					{% else %}
+					<span class="amount">&pound;{{ watch.price }}</span>
+					{% endif %}
 				</div>
-				<div class="col-md-3 col-sm-6 col-xs-6 main-product">
+				{% endfor %}
+			</div>
+		</div>
+		<!-- container /- -->	
+	</div>
+
+				<!-- <div class="col-md-3 col-sm-6 col-xs-6 main-product">
 					<div class="category-box product-box">
 						<div class="inner-product">
 							<img src="{{ url_for('static', filename='images/featured/featured-2.jpg') }}" alt="featured-img"/>
 							<div class="product-box-inner">
 								<ul>
-									<li><a title="Eye Icon" href="{{ url_for('static', filename='images/featured/featured-2.jpg') }}"><i class="fa fa-eye"></i></a></li>
+									<li><a title="Zoom" href="{{ url_for('static', filename='images/featured/featured-2.jpg') }}"><i class="fa fa-eye"></i></a></li>
 									
 								</ul>
 								<a title="Add to cart" href="#" class="btn">add to cart</a>
@@ -79,7 +86,7 @@
 							<img src="{{ url_for('static', filename='images/featured/featured-3.jpg') }}" alt="featured-img"/>
 							<div class="product-box-inner">
 								<ul>
-									<li><a title="Eye Icon" href="{{ url_for('static', filename='images/featured/featured-3.jpg') }}"><i class="fa fa-eye"></i></a></li>
+									<li><a title="Zoom" href="{{ url_for('static', filename='images/featured/featured-3.jpg') }}"><i class="fa fa-eye"></i></a></li>
 									
 								</ul>
 								<a title="Add to cart" href="#" class="btn">add to cart</a>
@@ -117,7 +124,7 @@
 							<img src="{{ url_for('static', filename='images/featured/featured-5.jpg') }}" alt="featured-img"/>
 							<div class="product-box-inner">
 								<ul>
-									<li><a title="Eye Icon" href="{{ url_for('static', filename='images/featured/featured-5.jpg') }}"><i class="fa fa-eye"></i></a></li>
+									<li><a title="Zoom" href="{{ url_for('static', filename='images/featured/featured-5.jpg') }}"><i class="fa fa-eye"></i></a></li>
 									
 								</ul>
 								<a title="Add to cart" href="#" class="btn">add to cart</a>
@@ -134,7 +141,7 @@
 							<img src="{{ url_for('static', filename='images/featured/featured-6.jpg') }}" alt="featured-img"/>
 							<div class="product-box-inner">
 								<ul>
-									<li><a title="Eye Icon" href="{{ url_for('static', filename='images/featured/featured-6.jpg') }}"><i class="fa fa-eye"></i></a></li>
+									<li><a title="Zoom" href="{{ url_for('static', filename='images/featured/featured-6.jpg') }}"><i class="fa fa-eye"></i></a></li>
 									
 								</ul>
 								<a title="Add to cart" href="#" class="btn">add to cart</a>
@@ -152,7 +159,7 @@
 							<img src="{{ url_for('static', filename='images/featured/featured-7.jpg') }}" alt="featured-img"/>
 							<div class="product-box-inner">
 								<ul>
-									<li><a title="Eye Icon" href="{{ url_for('static', filename='images/featured/featured-7.jpg') }}"><i class="fa fa-eye"></i></a></li>
+									<li><a title="Zoom" href="{{ url_for('static', filename='images/featured/featured-7.jpg') }}"><i class="fa fa-eye"></i></a></li>
 									
 								</ul>
 								<a title="Add to cart" href="#" class="btn">add to cart</a>
@@ -169,7 +176,7 @@
 							<img src="{{ url_for('static', filename='images/featured/featured-8.jpg') }}" alt="featured-img"/>
 							<div class="product-box-inner">
 								<ul>
-									<li><a title="Eye Icon" href="{{ url_for('static', filename='images/featured/featured-8.jpg') }}"><i class="fa fa-eye"></i></a></li>
+									<li><a title="Zoom" href="{{ url_for('static', filename='images/featured/featured-8.jpg') }}"><i class="fa fa-eye"></i></a></li>
 									
 								</ul>
 								<a title="Add to cart" href="#" class="btn">add to cart</a>
@@ -190,7 +197,7 @@
 							<img src="{{ url_for('static', filename='images/featured/featured-1.jpg') }}" alt="featured-img"/>
 							<div class="product-box-inner">
 								<ul>
-									<li><a title="Eye Icon" href="{{ url_for('static', filename='images/featured/featured-1.jpg') }}"><i class="fa fa-eye"></i></a></li>
+									<li><a title="Zoom" href="{{ url_for('static', filename='images/featured/featured-1.jpg') }}"><i class="fa fa-eye"></i></a></li>
 									
 								</ul>
 								<a title="Add to cart" href="#" class="btn">add to cart</a>
@@ -207,7 +214,7 @@
 							<img src="{{ url_for('static', filename='images/featured/featured-2.jpg') }}" alt="featured-img"/>
 							<div class="product-box-inner">
 								<ul>
-									<li><a title="Eye Icon" href="{{ url_for('static', filename='images/featured/featured-2.jpg') }}"><i class="fa fa-eye"></i></a></li>
+									<li><a title="Zoom" href="{{ url_for('static', filename='images/featured/featured-2.jpg') }}"><i class="fa fa-eye"></i></a></li>
 									
 								</ul>
 								<a title="Add to cart" href="#" class="btn">add to cart</a>
@@ -253,16 +260,14 @@
 					
 					<span class="amount"><del>&dollar;24.99</del> &dollar;19.99</span>
 				</div>
-			</div>
-		</div><!-- container /- -->
-	</div>
+			</div> -->
+		
+	
 	<!-- Feature Product /- -->
-<!-- 	
-	<div class="loading">
+<!--<div class="loading">
 		<a title="Click here for more products" href="#">
 			<img alt="loading icon" src="images/generic/load.gif">
 			<p>click here for more products</p>
 		</a>
-	</div>
-	 -->
-	{% endblock %}
+	</div>-->
+{% endblock %}

@@ -15,6 +15,7 @@ class Products(db.Model):
     name = db.Column(db.String(240), index=True, unique=True, nullable=False)
     price = db.Column(db.Numeric(11,2), index=True, nullable=False)
     discount_price = db.Column(db.Numeric(10,2), index=True, nullable=True)
+    sale = db.Column(db.Boolean, default=False, nullable=False)
     image_1 = db.Column(db.String(255), nullable=False)
     image_2 = db.Column(db.String(255), nullable=False)
     image_3 = db.Column(db.String(255), nullable=False)

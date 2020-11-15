@@ -6,42 +6,42 @@
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
-				<li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 				<li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-				<li data-target="#carousel-example-generic" data-slide-to="2" class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
 			</ol>
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
-				<div class="item">
-					<img src="{{ url_for('static', filename='images/products/Rolex banner.png') }}" alt="slide-1">
+				<div class="item active">
+					<img src="{{ url_for('static', filename='images/slider/watchbanner0.png') }}" alt="slide-0">
 					<div class="container">
 						<div class="slider-box">
 							<h3>Rolex Collection</h3>
 							<h2>New Stock</h2>
 							<p>Rolex watches are crafted from the finest raw materials and assembled with scrupulous attention to detail. </p>
-							<button class="btn">View</button>
+							<button class="btn" type="button" onclick="window.location.href='{{ url_for('watchbrand', watch_brand = Rolex)}}Rolex';">View</button>
 						</div>
 					</div>
 				</div>
 				<div class="item">
-					<img src="{{ url_for('static', filename='images/slider/slide-1.jpg') }}" alt="slide-1">
+					<img src="{{ url_for('static', filename='images/slider/watchbanner1.jpg') }}" alt="slide-1">
 					<div class="container">
 						<div class="slider-box">
 							<h3>Sell your Watch</h3>
-							<h2>Fresh Fall Styles</h2>
+							<h2>Get in Touch</h2>
 							<p>Watch Valuations made and part exchange available on selected watches</p>
-							<button class="btn" type="button" onclick="window.location.href='{{ url_for('sellwatch') }}';">Button</button>
+							<button class="btn" type="button" onclick="window.location.href='{{ url_for('sellwatch') }}';">Get in Touch</button>
 						</div>
 					</div>
 				</div>
-				<div class="item active">
-					<img src="{{ url_for('static', filename='images/generic/watchbannerbb.png') }}" alt="slide-2">
+				<div class="item">
+					<img src="{{ url_for('static', filename='images/slider/watchbanner2.png') }}" alt="slide-2">
 					<div class="container">
 						<div class="slider-box">
 							<h3>Sale Items</h3>
-							<h2>Fresh Fall Styles</h2>
-							<p>Nam ac egestas est. Mauris et pulvinar Alisesus, at tincidunt lorem maecenas tristique sit amet odio sit amet. </p>
-							<button class="btn">Button</button>
+							<h2>Price Deductions</h2>
+							<p>New and used watches at a reduced price</p>
+							<button class="btn" type="button" onclick="window.location.href='{{ url_for('sale') }}';">Go to Sale</button>
 						</div>
 					</div>
 				</div>		
@@ -82,7 +82,7 @@
 				<div class="container">
 					<!-- Section Header -->
 					<div class="section-header">
-						<h3>Featured products</h3>
+						<h3>Featured Brands</h3>
 						<p>Some of Our Bespoke Timepieces Available to Order</p>
 					</div><!-- Section Header /- -->
 					
@@ -95,18 +95,18 @@
 				<div id="categories-list" class="owl-carousel owl-theme our-partner">
 					<div class="item">						
 						<div class="category-box">
-							<a title="#" href="#">
-								<img src="{{ url_for('static', filename='images/category/placeholders/cat-img-1.jpg') }}" alt="cat-img" />
-								<span>Women’s Wear</span>
+							<a title="Breitling" href="{{ url_for('watchbrand', watch_brand = Breitling)}}Breitling">
+								<img src="{{ url_for('static', filename='images/category/Breitling.jpg') }}" alt="cat-img" />
+								<span>Audemars Piguet</span>
 								<div class="cat-hover"></div>
 							</a>
 						</div>
 					</div>
 					<div class="item">
 						<div class="category-box">
-							<a title="#" href="#">
-								<img src="{{ url_for('static', filename='images/category/placeholders/cat-img-2.jpg') }}" alt="cat-img"/>
-								<span>Accessories </span>
+							<a title="Hublot" href="{{ url_for('watchbrand', watch_brand = Omega)}}Omega">
+								<img src="{{ url_for('static', filename='images/category/Omega.jpg') }}" alt="cat-img"/>
+								<span>Hublot </span>
 								<div class="cat-hover"></div>
 							</a>
 						</div>
@@ -114,9 +114,18 @@
 					<div class="item">
 						<div class="category-box">
 							<span class="new">New</span>
-							<a title="#" href="#">
-								<img src="{{ url_for('static', filename='images/category/placeholders/cat-img-3.jpg') }}" alt="cat-img"/>
-								<span>Kids Wear</span>
+							<a title="Rolex" href="{{ url_for('watchbrand', watch_brand = Rolex)}}Rolex">
+								<img src="{{ url_for('static', filename='images/category/Rolex.jpg') }}" alt="cat-img"/>
+								<span>Rolex</span>
+								<div class="cat-hover"></div>
+							</a>
+						</div>
+					</div>
+					<div class="item">
+						<div class="category-box">
+							<a title="Piaget" href="{{ url_for('watchbrand', watch_brand = Hublot)}}Hublot">
+								<img src="{{ url_for('static', filename='images/category/Hublot.jpg') }}" alt="cat-img"/>
+								<span>Piaget</span>
 								<div class="cat-hover"></div>
 							</a>
 						</div>

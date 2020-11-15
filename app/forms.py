@@ -19,6 +19,7 @@ class Sellwatch(FlaskForm):
 class Contact(FlaskForm):
     yourname = StringField('Your Name', [validators.DataRequired('You Must Enter Your Name'), validators.Length(min=4, max=25)])
     email = EmailField('Email Address', [validators.DataRequired("You Must Enter Your Email Address"), validators.Length(min=6, max=35), validators.Email("This field requires a valid email address")])
+    subject = StringField('Subject', [validators.optional(), validators.Length(min=4, max=90)])
     description = TextAreaField('Enter Your Query Here', [validators.optional(), validators.Length(min= 14, max=500)])
     submit = SubmitField('Submit')
 

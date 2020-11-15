@@ -8,7 +8,7 @@
 			<ol class="breadcrumb">
 				<li><a title="Home" href="{{ url_for('home') }}">Home</a></li>
 				<li><a title="Watches" href="#">Watches</a></li>
-				<li class="active">Rolex</li>
+				<li class="active">{{ watch_id.brand }}</li>
 			</ol>
 			<div class="return-home-link pull-right">
 				<a title="Return to home page" href="{{ url_for('home') }}">return to home page</a>
@@ -25,18 +25,27 @@
 				<!-- col-md-7 -->
 				<div class="col-md-7">
 					<div class="large-product">
-						<div id="about-carousel" class="col-md-3 col-sm-3 col-xs-3 flexslider product-thumb no-padding">	
+						<div id="about-carousel" class="col-md-3 col-sm-3 col-xs-3 flexslider product-thumb no-padding" style="max-height: 535px; overflow: hidden;">	
                             <div class="flex-viewport" style="overflow: hidden; position: relative;">
                                 <ul class="slides" style="width: 602%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
                                     <li class="flex-active-slide" style="width: 126px; float: left; display: block;">
-                                        <img src="{{ url_for('static', filename='images/single-product/product-thumb-1.jpg') }}" alt="product-thumb" draggable="false">
+                                        <img src="{{ url_for('static', filename='images/products/watch/Rolex/6/PT1.jpg') }}" alt="product-thumb" draggable="false">
                                     </li>
                                     <li style="width: 126px; float: left; display: block;">
-                                        <img src="{{ url_for('static', filename='images/single-product/product-thumb-2.jpg') }}" alt="product-thumb" draggable="false">
+                                        <img src="{{ url_for('static', filename='images/products/watch/Rolex/6/PT2.jpg') }}" alt="product-thumb" draggable="false">
                                     </li>
                                     <li style="width: 126px; float: left; display: block;">
-                                        <img src="{{ url_for('static', filename='images/single-product/product-thumb-3.jpg') }}" alt="product-thumb" draggable="false">
-                                    </li>								
+                                        <img src="{{ url_for('static', filename='images/products/watch/Rolex/6/PT3.jpg') }}" alt="product-thumb" draggable="false">
+									</li>		
+									<li style="width: 126px; float: left; display: block;">
+                                        <img src="{{ url_for('static', filename='images/products/watch/Rolex/6/PT4.jpg') }}" alt="product-thumb" draggable="false">
+									</li>
+									<li style="width: 126px; float: left; display: block;">
+                                        <img src="{{ url_for('static', filename='images/products/watch/Rolex/6/PT5.jpg') }}" alt="product-thumb" draggable="false">
+									</li>
+									<li style="width: 126px; float: left; display: block;">
+                                        <img src="{{ url_for('static', filename='images/products/watch/Rolex/6/PT6.jpg') }}" alt="product-thumb" draggable="false">
+                                    </li>						
                                 </ul>
                             </div>
                             <ul class="flex-direction-nav">
@@ -51,16 +60,22 @@
 						<div id="about-slider" class="flexslider col-md-9 col-sm-9 col-xs-9 product-slider">
 							<ul class="slides">
 								<li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;">
-									<img class="magniflier" src="{{ url_for('static', filename='images/single-product/product-large-1.jpg') }}" alt="product-thumb" draggable="false">
+									<img class="magniflier" src="{{ url_for('static', filename='images/products/watch/Rolex/6/PL1.jpg') }}" alt="product-thumb" draggable="false">
 								</li>
 								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-									<img class="magniflier" src="{{ url_for('static', filename='images/single-product/product-large-2.jpg' ) }}" alt="product-thumb" draggable="false">
+									<img class="magniflier" src="{{ url_for('static', filename='images/products/watch/Rolex/6/PL2.jpg' ) }}" alt="product-thumb" draggable="false">
 								</li>
 								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-									<img class="magniflier" src="{{ url_for('static', filename='images/single-product/product-large-3.jpg') }}" alt="product-thumb" draggable="false">
+									<img class="magniflier" src="{{ url_for('static', filename='images/products/watch/Rolex/6/PL3.jpg') }}" alt="product-thumb" draggable="false">
 								</li>
 								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-									<img class="magniflier" src="{{ url_for('static', filename='images/single-product/product-large-2.jpg') }}" alt="product-thumb" draggable="false">
+									<img class="magniflier" src="{{ url_for('static', filename='images/products/watch/Rolex/6/PL4.jpg' ) }}" alt="product-thumb" draggable="false">
+								</li>
+								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+									<img class="magniflier" src="{{ url_for('static', filename='images/products/watch/Rolex/6/PL5.jpg') }}" alt="product-thumb" draggable="false">
+								</li>
+								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+									<img class="magniflier" src="{{ url_for('static', filename='images/products/watch/Rolex/6/PL6.jpg' ) }}" alt="product-thumb" draggable="false">
 								</li>
 							</ul>
 						</div>
@@ -75,13 +90,13 @@
 				<!-- col-md-5 -->
 				<div class="col-md-5 single-product-sidebar">
 					<div class="page-header">
-						<h3>ROLEX SUBMARINER 40MM, STAINLESS STEEL, BLACK DIAL – 116610LN</h3>
+						<h3>ROLEX SUBMARINER 40MM, STAINLESS STEEL, BLACK DIAL – 116610LN {{ watch_id.name }}</h3>
 					</div>
                     <br>
                     <br>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing Donec Nulla lectus nunc, efficitur dui vitae, viverra finibus massa Vestibulum molestie accumsan.</p>
 					<ul class="single-side-widget top-social ow-left-padding">
-						<li><img src="{{ url_for('static', filename='images/summary/gucci-icon.png') }}" alt="gucci"></li>
+						<li><img style='height: 40px' src="{{ url_for('static', filename='images/cart/rolex-icon.svg') }}" alt="gucci"></li>
 					</ul>
 					<aside class="widget widget_recent_post"style="padding-top: 0px;">						
 						<div role="tabpanel">

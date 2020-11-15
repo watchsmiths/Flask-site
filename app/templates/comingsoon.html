@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% set active_page = "brands" %}
+{% block content %}
+	<!-- Page Breadcrumb -->
+	<!-- container -->
+	<div class="container">
+		<div class="page-breadcrumb">
+			<ol class="breadcrumb">
+				<li><a title="Home" href="{{url_for('home')}}">Home</a></li>
+				<li><a title="Watch Brands" href="{{url_for('brands')}}">Watch Brands</a></li>
+				<li class="active">{{watch_brand}}</li>
+			</ol>
+			<div class="return-home-link pull-right">
+				<a title="Return to home page" href="{{url_for('home')}}">return to home page</a>
+			</div>
+		</div>
+		<div class="page-header ow-bottom-padding categories">
+            <h3>{{watch_brand}}</h3>
+            <br><br><br>
+		</div><!-- Section Header /- -->
+	</div><!-- container /- -->
+	<!-- Page Breadcrumb /- -->
+
+	<!-- Product Filter -->
+	
+	<!-- Product Filter /- -->
+    
+
+
+
+    
+    <!-- logic= for watch in brand > display watch. if there are no watches in brand > display coming soon sign -->
+
+
+	<!-- Feature Product -->
+	<div id="featured-products" class="featured-products bottom-shadow">
+		<!-- container -->
+		<div class="container">			
+			<img src="{{url_for('static', filename='images/products/comingsoonbanner_uprblk.svg')}}" alt="">
+		</div><!-- container /- -->
+	</div>
+	<!-- Feature Product /- -->
+<!-- 	
+	<div class="loading">
+		<a title="Click here for more products" href="#">
+			<img alt="loading icon" src="images/generic/load.gif">
+			<p>click here for more products</p>
+		</a>
+	</div>
+	 -->
+	{% endblock %}
