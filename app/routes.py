@@ -388,7 +388,7 @@ def product(watch_id):
         flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
     
     
-    # if watch_id not in watches:
+    # if watch_id not in watchbrand(watch_brand):
     #     abort(404)
     # else:
     return render_template('product.html', title='Product', watch_id=watch_id, newsletter_form=newsletter_form)
