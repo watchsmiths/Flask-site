@@ -35,7 +35,7 @@
 				{% for watch in watches %}
 				<div class="col-md-3 col-sm-6 col-xs-6 main-product">
 					<div class="category-box product-box">
-						{% if watch.sale == 'Yes' %}
+						{% if watch.sale == 1 %}
 						<span class="sale">sale</span>
 						{% endif %}
 						<div class="inner-product">
@@ -50,7 +50,7 @@
 						</div>
 					</div>
 					<a title="{{ watch.name }}" href="{{ url_for('product', watch_id = watch.watch_id ) }}" class="product-title">{{ watch.thumbname }}</a>
-					{% if watch.sale == 'Yes' %}
+					{% if watch.sale == 1 %}
 					<span class="amount"><del>&pound;{{ watch.price }}</del> &pound;{{ watch.discount_price }}</span>
 					{% else %}
 					<span class="amount">&pound;{{ watch.price }}</span>

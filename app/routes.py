@@ -4,7 +4,7 @@ import requests, os, sqlite3
 from app import app, db, forms
 # from app import bcrypt
 from .forms import Sellwatch, Contact, newsletter
-# from .models import Brands, Products 
+from .models import Brands, Products 
 
 
 Watchess = [
@@ -132,40 +132,6 @@ Watchess = [
 
 
 
-# Brandss = [
-#         {
-#             'name': 'Audemars Piguet',
-#             'logo': 'AP.jpg'
-#         },
-#         {
-#             'name': 'Breitling',
-#             'logo': 'breitling.jpg'
-#         },
-#         {
-#             'name': 'Hublot',
-#             'logo': 'hublot.jpg'
-#         },
-#         {
-#             'name': 'Omega',
-#             'logo': 'omega.jpg'
-#         },
-#         {
-#             'name': 'Patek Philippe',
-#             'logo': 'patek.jpg'
-#         },
-#         {
-#             'name': 'Piaget',
-#             'logo': 'piaget.jpg'
-#         },
-#         {
-#             'name': 'Rolex',
-#             'logo': 'rolex.jpg'
-#         },
-#         {
-#             'name': 'Sale',
-#             'logo': 'sale.jpg'
-#         },
-#     ]
 
 # def go(): 
 #     for brand in Watchess:
@@ -192,45 +158,12 @@ def about():
 
 @app.route('/brands', methods=['GET','POST'])
 def brands():
-    brands = [
-        {
-            'name': 'Audemars Piguet',
-            'image': 'AP.jpg'
-        },
-        {
-            'name': 'Breitling',
-            'image': 'breitling.jpg'
-        },
-        {
-            'name': 'Hublot',
-            'image': 'hublot.jpg'
-        },
-        {
-            'name': 'Omega',
-            'image': 'omega.jpg'
-        },
-        {
-            'name': 'Patek Philippe',
-            'image': 'patek.jpg'
-        },
-        {
-            'name': 'Piaget',
-            'image': 'piaget.jpg'
-        },
-        {
-            'name': 'Rolex',
-            'image': 'rolex.jpg'
-        },
-        {
-            'name': 'Sale',
-            'image': 'sale.jpg'
-        },
-    ]
+    
     newsletter_form= newsletter()
     if newsletter_form.validate_on_submit():
         flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
     
-    return render_template('watch_brands.html', title='Brands', brandnames=brands, newsletter_form=newsletter_form)
+    return render_template('watch_brands.html', title='Brands', brandnames=Brands.query.all(), newsletter_form=newsletter_form)
 
 @app.route('/brands/<string:watch_brand>', methods=['GET','POST'])
 def watchbrand(watch_brand):
@@ -238,143 +171,13 @@ def watchbrand(watch_brand):
     if newsletter_form.validate_on_submit():
         flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
     
-    watches = [
-        {
-            'brand': 'Rolex',
-            'name': 'Submariner 40mm, black dial – 116610LN',
-            'thumbname': 'Submariner Black Dial',
-            'cart_thumb': '',
-            'watch_id': '1',
-            'price': '8000',
-            'discount_price': '7550',
-            'sale':'Yes',
-            'product_large_1': 'PL1.jpg',
-            'product_large_2': 'PL2.jpg',
-            'product_large_3': 'PL3.jpg',
-            'product_thumb_1': 'PT1.jpg',
-            'product_thumb_2': 'PT2.jpg',
-            'product_thumb_3': 'PT3.jpg'
-        },
-        {
-            'brand': 'Rolex',
-            'name': 'GMT',
-            'thumbname': 'GMT',
-            'cart_thumb': '',
-            'watch_id': '2',
-            'price': '8000',
-            'discount_price': '',
-            'sale':'No',
-            'product_large_1': 'PL1.jpg',
-            'product_large_2': 'PL2.jpg',
-            'product_large_3': 'PL3.jpg',
-            'product_thumb_1': 'PT1.jpg',
-            'product_thumb_2': 'PT2.jpg',
-            'product_thumb_3': 'PT3.jpg'
-        },
-        {
-            'brand': 'Rolex',
-            'name': 'Oyster Perpetual Gold',
-            'thumbname': 'Oyster Perpetual Gold',
-            'cart_thumb': '',
-            'watch_id': '3',
-            'price': '8000',
-            'discount_price': '',
-            'sale':'No',
-            'product_large_1': 'PL1.jpg',
-            'product_large_2': 'PL2.jpg',
-            'product_large_3': 'PL3.jpg',
-            'product_thumb_1': 'PT1.jpg',
-            'product_thumb_2': 'PT2.jpg',
-            'product_thumb_3': 'PT3.jpg'
-        },
-        {
-            'brand': 'Rolex',
-            'name': 'Skydweller Gold',
-            'thumbname': 'Skydweller Gold',
-            'cart_thumb': '',
-            'watch_id': '4',
-            'price': '8000',
-            'discount_price': '',
-            'sale':'No',
-            'product_large_1': 'PL1.jpg',
-            'product_large_2': 'PL2.jpg',
-            'product_large_3': 'PL3.jpg',
-            'product_thumb_1': 'PT1.jpg',
-            'product_thumb_2': 'PT2.jpg',
-            'product_thumb_3': 'PT3.jpg'
-        },
-        {
-            'brand': 'Rolex',
-            'name': 'Skydweller Silver',
-            'thumbname': 'Skydweller Silver',
-            'cart_thumb': '',
-            'watch_id': '5',
-            'price': '8000',
-            'discount_price': '',
-            'sale':'No',
-            'product_large_1': 'PL1.jpg',
-            'product_large_2': 'PL2.jpg',
-            'product_large_3': 'PL3.jpg',
-            'product_thumb_1': 'PT1.jpg',
-            'product_thumb_2': 'PT2.jpg',
-            'product_thumb_3': 'PT3.jpg'
-        },
-        {
-            'brand': 'Rolex',
-            'name': 'Submariner Hulk',
-            'thumbname': 'Submariner Hulk',
-            'cart_thumb': '',
-            'watch_id': '6',
-            'price': '8000',
-            'discount_price': '',
-            'sale':'No',
-            'product_large_1': 'PL1.jpg',
-            'product_large_2': 'PL2.jpg',
-            'product_large_3': 'PL3.jpg',
-            'product_thumb_1': 'PT1.jpg',
-            'product_thumb_2': 'PT2.jpg',
-            'product_thumb_3': 'PT3.jpg'
-        },
-        {
-            'brand': 'Rolex',
-            'name': 'Oyster Perpetual Gold',
-            'thumbname': 'Oyster Perpetual Gold',
-            'cart_thumb': '',
-            'watch_id': '3',
-            'price': '8000',
-            'discount_price': '',
-            'sale':'No',
-            'product_large_1': 'PL1.jpg',
-            'product_large_2': 'PL2.jpg',
-            'product_large_3': 'PL3.jpg',
-            'product_thumb_1': 'PT1.jpg',
-            'product_thumb_2': 'PT2.jpg',
-            'product_thumb_3': 'PT3.jpg'
-        },
-        {
-            'brand': 'Rolex',
-            'name': 'Submariner 40mm, black dial – 116610LN',
-            'thumbname': 'Submariner Black Dial',
-            'cart_thumb': '',
-            'watch_id': '1',
-            'price': '8000',
-            'discount_price': '7550',
-            'sale':'Yes',
-            'product_large_1': 'PL1.jpg',
-            'product_large_2': 'PL2.jpg',
-            'product_large_3': 'PL3.jpg',
-            'product_thumb_1': 'PT1.jpg',
-            'product_thumb_2': 'PT2.jpg',
-            'product_thumb_3': 'PT3.jpg'
-        }
-    ]
-# ------------------------------------Below code-------------------------------------
-    if watch_brand not in brands():
+
+    if watch_brand not in Brands.query.all():
         abort(404)
     elif watch_brand not in ['Rolex', 'Sale']:
         return render_template('comingsoon.html', watch_brand=watch_brand, newsletter_form=newsletter_form)
     else:
-        return render_template('brandpage.html', watch_brand=watch_brand, watches=watches, newsletter_form=newsletter_form)
+        return render_template('brandpage.html', watch_brand=watch_brand, watches=Products.query.all(), newsletter_form=newsletter_form)
    
 
 @app.route('/brands/<string:watch_brand>/<int:watch_id>', methods=['GET','POST'])
