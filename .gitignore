@@ -10,3 +10,4 @@ app/__pycache__/routes.cpython-38.pyc
 app/.DS_Store
 */__pycache__/
 */.DS_Store
+.env
