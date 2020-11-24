@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash, abort
-import requests, os
+import requests, os, sqlite3
 
 from app import app, db, forms
 # from app import bcrypt
@@ -7,128 +7,128 @@ from .forms import Sellwatch, Contact, newsletter
 # from .models import Brands, Products 
 
 
-# Watchess = [
-#         {
-#             'brand_id': '7',        
-#             'name': 'Submariner 40mm, black dial – 116610LN',
-#             'thumb_name': 'Submariner Black Dial',
-#             'cart_thumb': '',
-#             'price': '8000',
-#             'discount_price': '7550',
-#             'sale': '1',
-#             'product_large_1': 'PL1.jpg',
-#             'product_large_2': 'PL2.jpg',
-#             'product_large_3': 'PL3.jpg',
-#             'product_thumb_1': 'PT1.jpg',
-#             'product_thumb_2': 'PT2.jpg',
-#             'product_thumb_3': 'PT3.jpg'
-#         },
-#         {
-#             'brand_id': '7',        
-#             'name': 'GMT',
-#             'thumb_name': 'GMT',
-#             'cart_thumb': '',
-#             'price': '8000',
-#             'discount_price': '',
-#             'sale': '0',
-#             'product_large_1': 'PL1.jpg',
-#             'product_large_2': 'PL2.jpg',
-#             'product_large_3': 'PL3.jpg',
-#             'product_thumb_1': 'PT1.jpg',
-#             'product_thumb_2': 'PT2.jpg',
-#             'product_thumb_3': 'PT3.jpg'
-#         },
-#         {
-#             'brand_id': '7',        
-#             'name': 'Oyster Perpetual Gold',
-#             'thumb_name': 'Oyster Perpetual Gold',
-#             'cart_thumb': '',
-#             'price': '8000',
-#             'discount_price': '',
-#             'sale': '0',
-#             'product_large_1': 'PL1.jpg',
-#             'product_large_2': 'PL2.jpg',
-#             'product_large_3': 'PL3.jpg',
-#             'product_thumb_1': 'PT1.jpg',
-#             'product_thumb_2': 'PT2.jpg',
-#             'product_thumb_3': 'PT3.jpg'
-#         },
-#         {
-#             'brand_id': '7',        
-#             'name': 'Skydweller Gold',
-#             'thumb_name': 'Skydweller Gold',
-#             'cart_thumb': '',
-#             'price': '8000',
-#             'discount_price': '',
-#             'sale': '0',
-#             'product_large_1': 'PL1.jpg',
-#             'product_large_2': 'PL2.jpg',
-#             'product_large_3': 'PL3.jpg',
-#             'product_thumb_1': 'PT1.jpg',
-#             'product_thumb_2': 'PT2.jpg',
-#             'product_thumb_3': 'PT3.jpg'
-#         },
-#         {
-#             'brand_id': '7',        
-#             'name': 'Skydweller Silver',
-#             'thumb_name': 'Skydweller Silver',
-#             'cart_thumb': '',
-#             'price': '8000',
-#             'discount_price': '',
-#             'sale': '0',
-#             'product_large_1': 'PL1.jpg',
-#             'product_large_2': 'PL2.jpg',
-#             'product_large_3': 'PL3.jpg',
-#             'product_thumb_1': 'PT1.jpg',
-#             'product_thumb_2': 'PT2.jpg',
-#             'product_thumb_3': 'PT3.jpg'
-#         },
-#         {
-#             'brand_id': '7',        
-#             'name': 'Submariner Hulk',
-#             'thumb_name': 'Submariner Hulk',
-#             'cart_thumb': '',
-#             'price': '8000',
-#             'discount_price': '',
-#             'sale': '0',
-#             'product_large_1': 'PL1.jpg',
-#             'product_large_2': 'PL2.jpg',
-#             'product_large_3': 'PL3.jpg',
-#             'product_thumb_1': 'PT1.jpg',
-#             'product_thumb_2': 'PT2.jpg',
-#             'product_thumb_3': 'PT3.jpg'
-#         },
-#         {
-#             'brand_id': '7',        
-#             'name': 'Oyster Perpetual Gold',
-#             'thumb_name': 'Oyster Perpetual Gold',
-#             'cart_thumb': '',
-#             'price': '8000',
-#             'discount_price': '',
-#             'sale': '0',
-#             'product_large_1': 'PL1.jpg',
-#             'product_large_2': 'PL2.jpg',
-#             'product_large_3': 'PL3.jpg',
-#             'product_thumb_1': 'PT1.jpg',
-#             'product_thumb_2': 'PT2.jpg',
-#             'product_thumb_3': 'PT3.jpg'
-#         },
-#         {
-#             'brand_id': '7',        
-#             'name': 'Submariner 40mm, black dial – 116610LN',
-#             'thumb_name': 'Submariner Black Dial',
-#             'cart_thumb': '',
-#             'price': '8000',
-#             'discount_price': '7550',
-#             'sale': '1',
-#             'product_large_1': 'PL1.jpg',
-#             'product_large_2': 'PL2.jpg',
-#             'product_large_3': 'PL3.jpg',
-#             'product_thumb_1': 'PT1.jpg',
-#             'product_thumb_2': 'PT2.jpg',
-#             'product_thumb_3': 'PT3.jpg'
-#         }
-#     ]
+Watchess = [
+        {
+            'brand_name': 'Rolex',        
+            'name': 'Submariner 40mm, black dial – 116610LN',
+            'thumb_name': 'Submariner Black Dial',
+            'cart_thumb': '',
+            'price': '8000',
+            'discount_price': '7550',
+            'sale': '1',
+            'product_large_1': 'PL1.jpg',
+            'product_large_2': 'PL2.jpg',
+            'product_large_3': 'PL3.jpg',
+            'product_thumb_1': 'PT1.jpg',
+            'product_thumb_2': 'PT2.jpg',
+            'product_thumb_3': 'PT3.jpg'
+        },
+        {
+            'brand_name': 'Rolex',        
+            'name': 'GMT',
+            'thumb_name': 'GMT',
+            'cart_thumb': '',
+            'price': '8000',
+            'discount_price': '',
+            'sale': '0',
+            'product_large_1': 'PL1.jpg',
+            'product_large_2': 'PL2.jpg',
+            'product_large_3': 'PL3.jpg',
+            'product_thumb_1': 'PT1.jpg',
+            'product_thumb_2': 'PT2.jpg',
+            'product_thumb_3': 'PT3.jpg'
+        },
+        {
+            'brand_name': 'Rolex',        
+            'name': 'Oyster Perpetual Gold',
+            'thumb_name': 'Oyster Perpetual Gold',
+            'cart_thumb': '',
+            'price': '8000',
+            'discount_price': '',
+            'sale': '0',
+            'product_large_1': 'PL1.jpg',
+            'product_large_2': 'PL2.jpg',
+            'product_large_3': 'PL3.jpg',
+            'product_thumb_1': 'PT1.jpg',
+            'product_thumb_2': 'PT2.jpg',
+            'product_thumb_3': 'PT3.jpg'
+        },
+        {
+            'brand_name': 'Rolex',        
+            'name': 'Skydweller Gold',
+            'thumb_name': 'Skydweller Gold',
+            'cart_thumb': '',
+            'price': '8000',
+            'discount_price': '',
+            'sale': '0',
+            'product_large_1': 'PL1.jpg',
+            'product_large_2': 'PL2.jpg',
+            'product_large_3': 'PL3.jpg',
+            'product_thumb_1': 'PT1.jpg',
+            'product_thumb_2': 'PT2.jpg',
+            'product_thumb_3': 'PT3.jpg'
+        },
+        {
+            'brand_name': 'Rolex',        
+            'name': 'Skydweller Silver',
+            'thumb_name': 'Skydweller Silver',
+            'cart_thumb': '',
+            'price': '8000',
+            'discount_price': '',
+            'sale': '0',
+            'product_large_1': 'PL1.jpg',
+            'product_large_2': 'PL2.jpg',
+            'product_large_3': 'PL3.jpg',
+            'product_thumb_1': 'PT1.jpg',
+            'product_thumb_2': 'PT2.jpg',
+            'product_thumb_3': 'PT3.jpg'
+        },
+        {
+            'brand_name': 'Rolex',        
+            'name': 'Submariner Hulk',
+            'thumb_name': 'Submariner Hulk',
+            'cart_thumb': '',
+            'price': '8000',
+            'discount_price': '',
+            'sale': '0',
+            'product_large_1': 'PL1.jpg',
+            'product_large_2': 'PL2.jpg',
+            'product_large_3': 'PL3.jpg',
+            'product_thumb_1': 'PT1.jpg',
+            'product_thumb_2': 'PT2.jpg',
+            'product_thumb_3': 'PT3.jpg'
+        },
+        {
+            'brand_name': 'Rolex',        
+            'name': 'Oyster Perpetual Gold',
+            'thumb_name': 'Oyster Perpetual Gold',
+            'cart_thumb': '',
+            'price': '8000',
+            'discount_price': '',
+            'sale': '0',
+            'product_large_1': 'PL1.jpg',
+            'product_large_2': 'PL2.jpg',
+            'product_large_3': 'PL3.jpg',
+            'product_thumb_1': 'PT1.jpg',
+            'product_thumb_2': 'PT2.jpg',
+            'product_thumb_3': 'PT3.jpg'
+        },
+        {
+            'brand_name': 'Rolex',        
+            'name': 'Submariner 40mm, black dial – 116610LN',
+            'thumb_name': 'Submariner Black Dial',
+            'cart_thumb': '',
+            'price': '8000',
+            'discount_price': '7550',
+            'sale': '1',
+            'product_large_1': 'PL1.jpg',
+            'product_large_2': 'PL2.jpg',
+            'product_large_3': 'PL3.jpg',
+            'product_thumb_1': 'PT1.jpg',
+            'product_thumb_2': 'PT2.jpg',
+            'product_thumb_3': 'PT3.jpg'
+        }
+    ]
 
 
 

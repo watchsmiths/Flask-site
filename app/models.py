@@ -11,7 +11,7 @@ class Brands(db.Model):
 
 class Products(db.Model):
     product_id = db.Column(db.Integer, primary_key=True)
-    brand_id = db.Column(db.Integer, db.ForeignKey('brands.brand_id'), nullable=False)
+    brand_name = db.Column(db.String, db.ForeignKey('brands.name'), nullable=False)
     name = db.Column(db.String(240), index=True, unique=True, nullable=False)
     thumb_name = db.Column(db.String(240), nullable=True)
     price = db.Column(db.Numeric(11,2), index=True, nullable=False)
