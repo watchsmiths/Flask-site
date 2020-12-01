@@ -35,17 +35,17 @@
 						<div class="col-md-3 col-sm-3 col-xs-6">
 							<div class="category-box">
 								<a title="{{ brand.name }}" href="{{ url_for('sale')}}">
-									<img src="static/images/category/{{ brand.logo }}" alt="cat-img" />
+									<img src="/static/images/category/{{ brand.logo }}" alt="cat-img" />
 									<span>{{ brand.name }}</span>
 									<div class="cat-hover"></div>
 								</a>
 							</div>
 						</div>
-						{% else %}
+					{% else %}
 						<div class="col-md-3 col-sm-3 col-xs-6">
 							<div class="category-box">
 								<a title="{{ brand.name }}" href="{{ url_for('watchbrand', watch_brand=brand.name )}}">
-									<img src="static/images/category/{{ brand.logo }}" alt="cat-img" />
+									<img src="/static/images/category/{{ brand.logo }}" alt="cat-img" />
 									<span>{{ brand.name }}</span>
 									<div class="cat-hover"></div>
 								</a>
