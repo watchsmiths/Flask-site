@@ -67,7 +67,7 @@ def product(watch_brand, watch_id):
     watch = Products.query.filter_by(brand_name=watch_brand, product_id=watch_id).first()
     watches = Products.query.filter(Products.product_id==watch_id).all()
 
-   if not watch:
+    if not watch:
         abort(404)
 
     if watches:
