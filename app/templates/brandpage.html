@@ -45,12 +45,11 @@
 								<ul>
 									<li><a title="{{ watch.thumb_name }}" href="/static/images/products/watch/{{ watch.brand_name }}/{{ watch.product_id }}/thumb.png"><i class="fa fa-eye"></i></a></li>
 								</ul>
-								<a title="Enquire" href="#" class="btn">Enquire</a>
 							</div>
 						</div>
 					</div>
 					<!-- {#<a title="{{ watch.name }}" href="{{ url_for('product', product_id = watch.product_id ) }}" class="product-title">{{ watch.thumb_name }}</a> =#}-->
-					<a title="{{ watch.name }}" href="#" class="product-title">{{ watch.thumb_name }}</a>
+					<a title="{{ watch.name }}" href="{{ url_for('product', watch_id= watch.product_id, watch_brand=watch.brand_name)}}" class="product-title">{{ watch.thumb_name }}</a>
 
 					{% if watch.sale == 1 %}
 					<span class="amount"><del>&pound;{{ watch.price }}</del> &pound;{{ watch.discount_price }}</span>

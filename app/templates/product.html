@@ -7,8 +7,8 @@
 		<div class="page-breadcrumb">
 			<ol class="breadcrumb">
 				<li><a title="Home" href="{{ url_for('home') }}">Home</a></li>
-				<li><a title="Watches" href="#">Watches</a></li>
-				<li class="active">{{ watch_id.brand }}</li>
+				<li><a title="Watches" href="{{ url_for('brands') }}">Watch Brands</a></li>
+				<li class="active"><a style="color: #b3aa9b;" href="{{ url_for('watchbrand', watch_brand = watch_brand) }}">{{ watch_brand }}</a></li>
 			</ol>
 			<div class="return-home-link pull-right">
 				<a title="Return to home page" href="{{ url_for('home') }}">return to home page</a>
@@ -29,22 +29,22 @@
                             <div class="flex-viewport" style="overflow: hidden; position: relative;">
                                 <ul class="slides" style="width: 602%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
                                     <li class="flex-active-slide" style="width: 126px; float: left; display: block;">
-                                        <img src="{{ url_for('static', filename='images/products/watch/Rolex/6/PT1.jpg') }}" alt="product-thumb" draggable="false">
+                                        <img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PT1.jpg" alt="product-thumb" draggable="false">
                                     </li>
                                     <li style="width: 126px; float: left; display: block;">
-                                        <img src="{{ url_for('static', filename='images/products/watch/Rolex/6/PT2.jpg') }}" alt="product-thumb" draggable="false">
+                                        <img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PT2.jpg" alt="product-thumb" draggable="false">
                                     </li>
                                     <li style="width: 126px; float: left; display: block;">
-                                        <img src="{{ url_for('static', filename='images/products/watch/Rolex/6/PT3.jpg') }}" alt="product-thumb" draggable="false">
+                                        <img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PT3.jpg" alt="product-thumb" draggable="false">
 									</li>		
 									<li style="width: 126px; float: left; display: block;">
-                                        <img src="{{ url_for('static', filename='images/products/watch/Rolex/6/PT4.jpg') }}" alt="product-thumb" draggable="false">
+                                        <img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PT4.jpg" alt="product-thumb" draggable="false">
 									</li>
 									<li style="width: 126px; float: left; display: block;">
-                                        <img src="{{ url_for('static', filename='images/products/watch/Rolex/6/PT5.jpg') }}" alt="product-thumb" draggable="false">
+                                        <img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PT5.jpg" alt="product-thumb" draggable="false">
 									</li>
 									<li style="width: 126px; float: left; display: block;">
-                                        <img src="{{ url_for('static', filename='images/products/watch/Rolex/6/PT6.jpg') }}" alt="product-thumb" draggable="false">
+                                        <img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PT6.jpg" alt="product-thumb" draggable="false">
                                     </li>						
                                 </ul>
                             </div>
@@ -60,22 +60,22 @@
 						<div id="about-slider" class="flexslider col-md-9 col-sm-9 col-xs-9 product-slider">
 							<ul class="slides">
 								<li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;">
-									<img class="magniflier" src="{{ url_for('static', filename='images/products/watch/Rolex/6/PL1.jpg') }}" alt="product-thumb" draggable="false">
+									<img class="magniflier" src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL1.jpg" alt="product-thumb" draggable="false">
 								</li>
 								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-									<img class="magniflier" src="{{ url_for('static', filename='images/products/watch/Rolex/6/PL2.jpg' ) }}" alt="product-thumb" draggable="false">
+									<img class="magniflier" src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL2.jpg" alt="product-thumb" draggable="false">
 								</li>
 								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-									<img class="magniflier" src="{{ url_for('static', filename='images/products/watch/Rolex/6/PL3.jpg') }}" alt="product-thumb" draggable="false">
+									<img class="magniflier" src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL3.jpg" alt="product-thumb" draggable="false">
 								</li>
 								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-									<img class="magniflier" src="{{ url_for('static', filename='images/products/watch/Rolex/6/PL4.jpg' ) }}" alt="product-thumb" draggable="false">
+									<img class="magniflier" src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL4.jpg" alt="product-thumb" draggable="false">
 								</li>
 								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-									<img class="magniflier" src="{{ url_for('static', filename='images/products/watch/Rolex/6/PL5.jpg') }}" alt="product-thumb" draggable="false">
+									<img class="magniflier" src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL5.jpg" alt="product-thumb" draggable="false">
 								</li>
 								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-									<img class="magniflier" src="{{ url_for('static', filename='images/products/watch/Rolex/6/PL6.jpg' ) }}" alt="product-thumb" draggable="false">
+									<img class="magniflier" src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL6.jpg" alt="product-thumb" draggable="false">
 								</li>
 							</ul>
 						</div>
@@ -90,13 +90,15 @@
 				<!-- col-md-5 -->
 				<div class="col-md-5 single-product-sidebar">
 					<div class="page-header">
-						<h3>ROLEX SUBMARINER 40MM, STAINLESS STEEL, BLACK DIAL – 116610LN {{ watch_id.name }}</h3>
+						<h3>{{ watch.brand_name }} {{ watch.name }}</h3>
 					</div>
                     <br>
-                    <br>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing Donec Nulla lectus nunc, efficitur dui vitae, viverra finibus massa Vestibulum molestie accumsan.</p>
+					<br>
+					{% autoescape false %} 
+					<p>{{ watch.description | replace("\n", "<br>") }}</p>
+					{% endautoescape %}
 					<ul class="single-side-widget top-social ow-left-padding">
-						<li><img style='height: 40px' src="{{ url_for('static', filename='images/cart/rolex-icon.svg') }}" alt="gucci"></li>
+						<li><img style='height: 40px' src="{{ url_for('static', filename='images/cart/rolex-icon.svg') }}" alt="Rolex"></li>
 					</ul>
 					<aside class="widget widget_recent_post"style="padding-top: 0px;">						
 						<div role="tabpanel">
@@ -107,11 +109,17 @@
 									<div class="shopping-cart-table">
 										<table>
 											<tbody>
+												
 												<tr class="cart-subtotal">
 													<th>Product Price</th>
-													<td><span class="amount">£19.95</span></td>
+													{% if watch.sale == 1 %}
+													<td><span class="amount"><del>&pound;{{ watch.price }}</del></span></td>
+													<td><span class="amount">&pound;{{ watch.discount_price }}</span></td>
+													{% else %}
+													<td><span class="amount">&pound;{{ watch.price }}</span></td>
+													{% endif %}
 												</tr>
-												<tr class="cart-subtotal">
+												<!-- <tr class="cart-subtotal">
 													<th>Product Quantity</th>
 													<td>
 														<select class="minimal">
@@ -120,15 +128,20 @@
 															<option>03</option>
 														</select>
 													</td>
-												</tr>
+												</tr> -->
 												<tr class="order-total">
-													<th>Sub Total Price</th>
-													<td><strong><span class="total-amount">£19.95</span></strong> </td>
+													<th>Total Price</th>
+													{% if watch.sale == 1 %}
+													<td><strong><span class="total-amount">&pound;{{ watch.discount_price }}</span></strong></td>
+													<span class="sale">SALE</span>
+													{% else %}
+													<td><strong><span class="total-amount">&pound;{{ watch.price }}</span></strong></td>
+													{% endif %}
 												</tr>
 											</tbody>
 										</table>
 										<ul>
-											<li><a title="Add Cart" href="#">Add to Cart</a></li>
+											<li><a title="Enquiries" href="{{ url_for('contacter', watch_name=watch.name) }}">Enquire</a></li>
 										</ul>
 									</div>
 								</div>

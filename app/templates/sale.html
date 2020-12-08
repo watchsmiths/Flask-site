@@ -7,7 +7,8 @@
 		<div class="page-breadcrumb">
 			<ol class="breadcrumb">
 				<li><a title="Home" href="{{ url_for('home') }}">Home</a></li>
-				<li class="active"><a title="Clothing" href="#">Watches</a></li>
+				<li><a title="Watches" href="{{ url_for('brands') }}">Watch Brands</a></li>
+				<li class="active">Sale Watches</a></li>
 			</ol>
 			<div class="return-home-link pull-right">
 				<a title="Return to home page" href="{{ url_for('home') }}">return to home page</a>
@@ -61,162 +62,14 @@
 								<ul>
 									<li><a title="Rolex Submariner 116610LN" href="{{ url_for('static', filename='images/products/Rolex/submariner-date-thumb.png') }}"><i class="fa fa-eye"></i></a></li>
 								</ul>
-								<a title="Add to cart" href="#" class="btn">add to cart</a>
 							</div>
 						</div>
 					</div>
-					<a title="Fashionable Pink Top" href="#" class="product-title">Rolex Submariner 40mm, black dial – 116610LN</a>
+					<a href="{{ url_for('product', watch_id=1, watch_brand='Rolex') }}" class="product-title">Rolex Submariner 40mm, black dial – 116610LN</a>
 					
 					<span class="amount"><del>&pound;8000</del> &pound;7550</span>
 				</div>
-				<!-- <div class="col-md-3 col-sm-6 col-xs-6 main-product">
-					<div class="category-box product-box">
-						<div class="inner-product">
-							<img src= "{{url_for('static', filename='images/featured/featured-2.jpg') }}" alt="featured-img"/>
-							<div class="product-box-inner">
-								<ul>
-									<li><a title="Eye Icon" href="{{ url_for('static', filename='images/featured/featured-2.jpg') }}"><i class="fa fa-eye"></i></a></li>
-								</ul>
-								<a title="Add to cart" href="#" class="btn">add to cart</a>
-							</div>
-						</div>
-					</div>
-					<a title="Fashionable Pink Top" href="#" class="product-title">Fashionable Pink Top</a>
-					<span class="amount"><del>&dollar;24.99</del> &dollar;19.99</span>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-6 main-product">
-					<div class="category-box product-box">
-						<span class="sale">sales</span>
-						<div class="inner-product">
-							<img src= "{{url_for('static', filename='images/featured/featured-3.jpg') }}" alt="featured-img"/>
-							<div class="product-box-inner">
-								<ul>
-									<li><a title="Eye Icon" href="{{ url_for('static', filename='images/featured/featured-3.jpg') }}"><i class="fa fa-eye"></i></a></li>
-								</ul>
-								<a title="Add to cart" href="#" class="btn">add to cart</a>
-							</div>
-						</div>
-					</div>
-					<a title="Fashionable Pink Top" href="#" class="product-title">Fashionable Pink Top</a>
-					<span class="amount"><del>&dollar;24.99</del> &dollar;19.99</span>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-6 main-product">
-					<div class="category-box product-box">
-						<div class="inner-product">
-							<img src= "{{url_for('static', filename='images/featured/featured-4.jpg') }}" alt="featured-img"/>
-							<div class="product-box-inner">
-								<ul>
-									<li><a title="" href="{{ url_for('static', filename='images/featured/featured-4.jpg') }}"><i class="fa fa-eye"></i></a></li><li><a title="" href="#"><i class="fa fa-heart"></i></a></li>
-								</ul>
-								<a title="Add to cart" href="#" class="btn">add to cart</a>
-							</div>
-						</div>
-					</div>
-					<a title="Fashionable Pink Top" href="#" class="product-title">Fashionable Pink Top</a>
-					<span class="amount"><del>&dollar;24.99</del> &dollar;19.99</span>
-				</div> -->
 			</div>
-			
-			<!-- <div class="category-box-main product-box-main new-categories">
-				<div class="col-md-3 col-sm-6 col-xs-6 main-product">
-					<div class="category-box product-box">
-						<span class="sale">sales</span>
-						<div class="inner-product">
-							<img src= "{{url_for('static', filename='images/featured/featured-1.jpg') }}" alt="featured-img"/>
-							<div class="product-box-inner">
-								<ul>
-									<li><a title="Eye Icon" href="{{ url_for('static', filename='images/featured/featured-1.jpg') }}"><i class="fa fa-eye"></i></a></li>
-								</ul>
-								<a title="Add to cart" href="#" class="btn">add to cart</a>
-							</div>
-						</div>
-					</div>
-					<a title="Fashionable Pink Top" href="#" class="product-title">Fashionable Pink Top</a>
-					<ul class="star">
-						<li>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star-o"></i>
-						<i class="fa fa-star-o"></i>
-						</li>
-					</ul>
-					<span class="amount"><del>&dollar;24.99</del> &dollar;19.99</span>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-6 main-product">
-					<div class="category-box product-box">
-						<div class="inner-product">
-							<img src= "{{url_for('static', filename='images/featured/featured-2.jpg') }}" alt="featured-img"/>
-							<div class="product-box-inner">
-								<ul>
-									<li><a title="Eye Icon" href="{{ url_for('static', filename='images/featured/featured-2.jpg') }}"><i class="fa fa-eye"></i></a></li>
-								</ul>
-								<a title="Add to cart" href="#" class="btn">add to cart</a>
-							</div>
-						</div>
-					</div>
-					<a title="Fashionable Pink Top" href="#" class="product-title">Fashionable Pink Top</a>
-					<ul class="star">
-						<li>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star-o"></i>
-						<i class="fa fa-star-o"></i>
-						</li>
-					</ul>
-					<span class="amount"><del>&dollar;24.99</del> &dollar;19.99</span>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-6 main-product">
-					<div class="category-box product-box">
-						<span class="sale">sales</span>
-						<div class="inner-product">
-							<img src= "{{url_for('static', filename='images/featured/featured-3.jpg') }}" alt="featured-img"/>
-							<div class="product-box-inner">
-								<ul>
-									<li><a title="Eye" href="{{ url_for('static', filename='images/featured/featured-3.jpg') }}"><i class="fa fa-eye"></i></a></li><li><a title="Heart" href="#"><i class="fa fa-heart"></i></a></li>
-								</ul>
-								<a title="Add to cart" href="#" class="btn">add to cart</a>
-							</div>
-						</div>
-					</div>
-					<a title="Fashionable Pink Top" href="#" class="product-title">Fashionable Pink Top</a>
-					<ul class="star">
-						<li>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star-o"></i>
-						<i class="fa fa-star-o"></i>
-						</li>
-					</ul>
-					<span class="amount"><del>&dollar;24.99</del> &dollar;19.99</span>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-6 main-product">
-					<div class="category-box product-box">
-						<div class="inner-product">
-							<img src= "{{url_for('static', filename='images/featured/featured-4.jpg') }}" alt="featured-img"/>
-							<div class="product-box-inner">
-								<ul>
-									<li><a title="Eye" href="{{ url_for('static', filename='images/featured/featured-4.jpg') }}"><i class="fa fa-eye"></i></a></li><li><a title="Heart" href="#"><i class="fa fa-heart"></i></a></li>
-								</ul>
-								<a title="Add to cart" href="#" class="btn">add to cart</a>
-							</div>
-						</div>
-					</div>
-					<a title="Fashionable Pink Top" href="#" class="product-title">Fashionable Pink Top</a>
-					<ul class="star">
-						<li>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star"></i>
-						<i class="fa fa-star-o"></i>
-						<i class="fa fa-star-o"></i>
-						</li>
-					</ul>
-					<span class="amount"><del>&dollar;24.99</del> &dollar;19.99</span>
-				</div>
-			</div> -->
 		</div><!-- container /- -->
 	</div>
 	<!-- Feature Product /- -->
