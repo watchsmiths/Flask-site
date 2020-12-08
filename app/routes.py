@@ -115,14 +115,14 @@ def contact():
 
     return render_template('contact.html', title = 'Contact Us', form=form, newsletter_form=newsletter_form)
 
-@app.route('/contact/<string:watch_name>', methods=['GET', 'POST'])
-def contacter(watch_name):
+@app.route('/contact/<string:watch_brand>/<string:watch_name>', methods=['GET', 'POST'])
+def contacter(watch_brand, watch_name):
     form = Contact()
     newsletter_form=newsletter()  
     if newsletter_form.validate_on_submit():
         flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
     #Look at passing Brand name through to route aswell
-    form.subject.data = f'Enquiry: {watch_name}'
+    form.subject.data = f'Enquiry: {watch_brand} {watch_name}'
 
     if request.method == "POST":
         email = form.email.data
@@ -136,8 +136,18 @@ def contacter(watch_name):
         flash(f'Thank you for your enquiry, confirmation of recipt will be sent to {email}. We aim to get back to you shortly', "success")
         return render_template('contact.html', success=True)
 
-# fix logic for entering any string in URL
-    return render_template('contact.html', title = 'Contact Us', form=form, newsletter_form=newsletter_form, watch_name=watch_name)
+
+    #url logic
+    page = Brands.query.filter(Brands.name==watch_brand).all()
+    watches = Products.query.filter_by(brand_name=watch_brand)
+    
+    if not page:
+        abort(404)
+    
+    
+    
+    # fix logic for entering any string in URL
+    return render_template('contact.html', title = 'Contact Us', form=form, newsletter_form=newsletter_form, watch_name=watch_name, watch_brand=watch_brand)
 
 @app.errorhandler(404)
 def not_found_error(error):
