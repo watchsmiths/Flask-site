@@ -63,6 +63,15 @@
     border: 1px solid #ff1111;
 }
 
+a[href^="mailto"] {
+	color: #b3aa9b;
+}
+
+a[href^="mailto"]:hover {
+	text-decoration: underline;
+	/* color: #c99618; */
+	color: black;
+}
 
 .newsletter_form {
 	display: flex;
