@@ -14,6 +14,7 @@ class Products(db.Model):
     brand_name = db.Column(db.String, db.ForeignKey('brands.name'), nullable=False)
     name = db.Column(db.String(240), index=True, unique=True, nullable=False)
     thumb_name = db.Column(db.String(240), nullable=True)
+    description = db.Column(db.String(3000), nullable=True)
     price = db.Column(db.Numeric(11,2), nullable=False)
     discount_price = db.Column(db.String(240), nullable=True)
     sale = db.Column(db.Boolean, default=0, nullable=False)
