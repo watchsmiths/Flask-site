@@ -98,7 +98,12 @@
 					<p>{{ watch.description | replace("\n", "<br>") }}</p>
 					{% endautoescape %}
 					<ul class="single-side-widget top-social ow-left-padding">
-						<li><img style='height: 40px' src="{{ url_for('static', filename='images/cart/rolex-icon.svg') }}" alt="Rolex"></li>
+						<li>
+							<a href="{{ url_for('watchbrand', watch_brand = watch_brand) }}">
+								<img style='height: 40px' src="{{ url_for('static', filename='images/cart/rolex-icon.svg') }}" alt="Rolex">
+							</a>
+						</li>
+						
 					</ul>
 					<aside class="widget widget_recent_post"style="padding-top: 0px;">						
 						<div role="tabpanel">
