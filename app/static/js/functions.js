@@ -85,6 +85,12 @@
 		// 	$('.menu-block').removeClass("navbar-fixed-top");
 		// } // set sticky menu - end
 
+
+
+		/* Set carousel maxHeight to slider's height */
+		$('#about-carousel').css('max-height', $('#about-slider').css('height'))
+
+
 		$('.navbar-nav li a, .logo-block a').on('click', function(event)
 		{
 			var anchor = $(this);
