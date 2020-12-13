@@ -38,15 +38,20 @@
 						{% if watch.sale == 1 %}
 						<span class="sale">sale</span>
 						{% endif %}
+						<a href="{{ url_for('product', watch_id= watch.product_id, watch_brand=watch.brand_name)}}">
 						<div class="inner-product">
+							{% if watch.product_id == 6 %}
 							<img src="/static/images/products/watch/{{ watch.brand_name }}/{{ watch.product_id }}/thumb.svg" height='292px' width='292px' alt="{{ watch.name }}"/>
-
-							<div class="product-box-inner">
+							{% else %}
+							<img src="/static/images/products/watch/{{ watch.brand_name }}/{{ watch.product_id }}/thumb.png" height='292px' width='292px' alt="{{ watch.name }}"/>
+							{% endif %}
+							<!-- <div class="product-box-inner">
 								<ul>
 									<li><a title="{{ watch.thumb_name }}" href="/static/images/products/watch/{{ watch.brand_name }}/{{ watch.product_id }}/thumb.png"><i class="fa fa-eye"></i></a></li>
 								</ul>
-							</div>
+							</div> -->
 						</div>
+						</a>
 					</div>
 					<!-- {#<a title="{{ watch.name }}" href="{{ url_for('product', product_id = watch.product_id ) }}" class="product-title">{{ watch.thumb_name }}</a> =#}-->
 					<a title="{{ watch.name }}" href="{{ url_for('product', watch_id= watch.product_id, watch_brand=watch.brand_name)}}" class="product-title">{{ watch.thumb_name }}</a>
