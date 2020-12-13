@@ -621,6 +621,11 @@
 		var window_height = $(window).height();
 		var window_width = $(window).width();
 		// $(".header").css("height", window_height + "px");
+
+
+		/* Set carousel maxHeight to slider's height */
+		$('#about-carousel').css('max-height', $('#about-slider').css('height'))
+
 		
 	});
 	/* Event - Window Resize /- */
