@@ -71,7 +71,7 @@ def product(watch_brand, watch_id):
         abort(404)
 
     if watches:
-        return render_template('product.html', title='Product', watch=watch, watch_brand=watch_brand, newsletter_form=newsletter_form)
+        return render_template('product.html', title=str(watch_brand+" "+watch.thumb_name), watch=watch, watch_brand=watch_brand, newsletter_form=newsletter_form)
     else:
         abort(404)
 

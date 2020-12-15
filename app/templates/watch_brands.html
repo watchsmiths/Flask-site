@@ -31,7 +31,7 @@
 			<div class="category-box-main">
 				<!-- col-md-3 -->
 				{% for brand in brands %}
-					{% if brand.name == 'Sale' %}
+				{#	<!-- {% if brand.name == 'Sale' %}
 						<div class="col-md-3 col-sm-3 col-xs-6">
 							<div class="category-box">
 								<a title="{{ brand.name }}" href="{{ url_for('sale')}}">
@@ -41,17 +41,17 @@
 								</a>
 							</div>
 						</div>
-					{% else %}
+					{% else %} -->#}
 						<div class="col-md-3 col-sm-3 col-xs-6">
 							<div class="category-box">
 								<a title="{{ brand.name }}" href="{{ url_for('watchbrand', watch_brand=brand.name )}}">
-									<img src="/static/images/category/{{ brand.logo }}" alt="cat-img" />
+									<img src="/static/images/category/{{ brand.logo }}.png" alt="cat-img" />
 									<span>{{ brand.name }}</span>
 									<div class="cat-hover"></div>
 								</a>
 							</div>
 						</div>
-					{% endif %}
+					{#<!-- {% endif %} -->#}
 				{% endfor %}
 			</div>
 			<!-- category box main /- -->

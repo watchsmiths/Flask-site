@@ -85,6 +85,12 @@
 		// 	$('.menu-block').removeClass("navbar-fixed-top");
 		// } // set sticky menu - end
 
+
+
+		/* Set carousel maxHeight to slider's height */
+		$('#about-carousel').css('max-height', $('#about-slider').css('height'))
+
+
 		$('.navbar-nav li a, .logo-block a').on('click', function(event)
 		{
 			var anchor = $(this);
@@ -245,7 +251,9 @@
 			itemWidth: 170,
 			itemMargin: 5,
 			asNavFor: '#about-slider',
-			direction: "vertical"
+			direction: "vertical",
+			maxItems: 3,
+			touch: true
 		});
 
 		$('#about-slider').flexslider({
@@ -254,7 +262,8 @@
 			animationLoop: false,
 			slideshow: false,
 			sync: "#about-carousel",
-			directionNav: false
+			directionNav: false,
+			touch: true
 		});
 
 		/* Loader */
@@ -292,7 +301,7 @@
 				function() { $('.dropdown-menu', this).fadeOut("slow");
 			});
 		}
-		/* Lightbox for Highlights Gallery	*/
+		/* Lightbox for Highlights Gallery	- .product-box-inner currently disabled in HTML */
 		$('.product-box-inner').magnificPopup({
 			delegate: ' ul > li:first-Child > a',
 			type: 'image',
@@ -307,7 +316,7 @@
 				tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',				
 			}
 		});
-		
+		// .look-book-img-box-hover currently disabled in HTML
 		$('.look-book-img-box-hover').magnificPopup({
 			delegate: ' ul > li:first-Child > a',
 			type: 'image',
@@ -329,9 +338,14 @@
 			type: 'image',
 			tLoading: 'Loading image #%curr%...',
 			mainClass: 'mfp-img-mobile',
+			// zoom: {
+			// 	enabled: true,
+			// 	duration: 500
+			// },
 			gallery: {
 				enabled: true,
-				navigateByImgClick: true,
+				navigateByImgClick: false,
+				closeOnContentClick: true,
 				preload: [0,1] // Will preload 0 - before current, and 1 after the current image
 			},
 			image: {
@@ -339,163 +353,163 @@
 			}
 		});
 		
-		
-		/* megnify */
-		if( $(".magniflier").length ) {
-		var native_width = 0;
-		  var native_height = 0;
-		  var mouse = {x: 0, y: 0};
-		  var magnify;
-		  var cur_img;
 
-		  var ui = {
-			magniflier: $('.magniflier')
-		  };
+		// /* megnify */ - not using because of functionality on touch screen mobile devices
+		// if( $(".magniflier").length ) {
+		// var native_width = 0;
+		//   var native_height = 0;
+		//   var mouse = {x: 0, y: 0};
+		//   var magnify;
+		//   var cur_img;
 
-		  // Add the magnifying glass
-		  if (ui.magniflier.length) {
-			var div = document.createElement('div');
-			div.setAttribute('class', 'glass');
-			ui.glass = $(div);
+		//   var ui = {
+		// 	magniflier: $('.magniflier')
+		//   };
 
-			$('body').append(div);
-		  }
+		//   // Add the magnifying glass
+		//   if (ui.magniflier.length) {
+		// 	var div = document.createElement('div');
+		// 	div.setAttribute('class', 'glass');
+		// 	ui.glass = $(div);
+
+		// 	$('body').append(div);
+		//   }
 
 		  
-		  // All the magnifying will happen on "mousemove"
+		//   // All the magnifying will happen on "mousemove"
 
-		  var mouseMove = function(e) {
-			var $el = $(this);
+		//   var mouseMove = function(e) {
+		// 	var $el = $(this);
 
-			// Container offset relative to document
-			var magnify_offset = cur_img.offset();
+		// 	// Container offset relative to document
+		// 	var magnify_offset = cur_img.offset();
 
-			// Mouse position relative to container
-			// pageX/pageY - container's offsetLeft/offetTop
-			mouse.x = e.pageX - magnify_offset.left;
-			mouse.y = e.pageY - magnify_offset.top;
+		// 	// Mouse position relative to container
+		// 	// pageX/pageY - container's offsetLeft/offetTop
+		// 	mouse.x = e.pageX - magnify_offset.left;
+		// 	mouse.y = e.pageY - magnify_offset.top;
 			
-			// The Magnifying glass should only show up when the mouse is inside
-			// It is important to note that attaching mouseout and then hiding
-			// the glass wont work cuz mouse will never be out due to the glass
-			// being inside the parent and having a higher z-index (positioned above)
-			if (
-			  mouse.x < cur_img.width() &&
-			  mouse.y < cur_img.height() &&
-			  mouse.x > 0 &&
-			  mouse.y > 0
-			  ) {
-				magnify(e);
-			}
-			else {
-			  ui.glass.fadeOut(100);
-			}
-			return;
-		  };
+		// 	// The Magnifying glass should only show up when the mouse is inside
+		// 	// It is important to note that attaching mouseout and then hiding
+		// 	// the glass wont work cuz mouse will never be out due to the glass
+		// 	// being inside the parent and having a higher z-index (positioned above)
+		// 	if (
+		// 	  mouse.x < cur_img.width() &&
+		// 	  mouse.y < cur_img.height() &&
+		// 	  mouse.x > 0 &&
+		// 	  mouse.y > 0
+		// 	  ) {
+		// 		magnify(e);
+		// 	}
+		// 	else {
+		// 	  ui.glass.fadeOut(100);
+		// 	}
+		// 	return;
+		//   };
 
-		  var magnify = function(e) {
+		//   var magnify = function(e) {
 
-			// The background position of div.glass will be
-			// changed according to the position
-			// of the mouse over the img.magniflier
-			//
-			// So we will get the ratio of the pixel
-			// under the mouse with respect
-			// to the image and use that to position the
-			// large image inside the magnifying glass
+		// 	// The background position of div.glass will be
+		// 	// changed according to the position
+		// 	// of the mouse over the img.magniflier
+		// 	//
+		// 	// So we will get the ratio of the pixel
+		// 	// under the mouse with respect
+		// 	// to the image and use that to position the
+		// 	// large image inside the magnifying glass
 
-			var rx = Math.round(mouse.x/cur_img.width()*native_width - ui.glass.width()/2)*-1;
-			var ry = Math.round(mouse.y/cur_img.height()*native_height - ui.glass.height()/2)*-1;
-			var bg_pos = rx + "px " + ry + "px";
+		// 	var rx = Math.round(mouse.x/cur_img.width()*native_width - ui.glass.width()/2)*-1;
+		// 	var ry = Math.round(mouse.y/cur_img.height()*native_height - ui.glass.height()/2)*-1;
+		// 	var bg_pos = rx + "px " + ry + "px";
 			
-			// Calculate pos for magnifying glass
-			//
-			// Easy Logic: Deduct half of width/height
-			// from mouse pos.
+		// 	// Calculate pos for magnifying glass
+		// 	//
+		// 	// Easy Logic: Deduct half of width/height
+		// 	// from mouse pos.
 
-			// var glass_left = mouse.x - ui.glass.width() / 2;
-			// var glass_top  = mouse.y - ui.glass.height() / 2;
-			var glass_left = e.pageX - ui.glass.width() / 2;
-			var glass_top  = e.pageY - ui.glass.height() / 2;
-			//console.log(glass_left, glass_top, bg_pos)
-			// Now, if you hover on the image, you should
-			// see the magnifying glass in action
-			ui.glass.css({
-			  left: glass_left,
-			  top: glass_top,
-			  backgroundPosition: bg_pos
-			});
+		// 	// var glass_left = mouse.x - ui.glass.width() / 2;
+		// 	// var glass_top  = mouse.y - ui.glass.height() / 2;
+		// 	var glass_left = e.pageX - ui.glass.width() / 2;
+		// 	var glass_top  = e.pageY - ui.glass.height() / 2;
+		// 	//console.log(glass_left, glass_top, bg_pos)
+		// 	// Now, if you hover on the image, you should
+		// 	// see the magnifying glass in action
+		// 	ui.glass.css({
+		// 	  left: glass_left,
+		// 	  top: glass_top,
+		// 	  backgroundPosition: bg_pos
+		// 	});
 
-			return;
-		  };
+		// 	return;
+		//   };
 
-		  $('.magniflier').on('mousemove', function() {
-			ui.glass.fadeIn(100);
+		//   $('.magniflier').on('mousemove', function() {
+		// 	ui.glass.fadeIn(100);
 			
-			cur_img = $(this);
+		// 	cur_img = $(this);
 
-			var large_img_loaded = cur_img.data('large-img-loaded');
-			var src = cur_img.data('large') || cur_img.attr('src');
+		// 	var large_img_loaded = cur_img.data('large-img-loaded');
+		// 	var src = cur_img.data('large') || cur_img.attr('src');
 
-			// Set large-img-loaded to true
-			// cur_img.data('large-img-loaded', true)
+		// 	// Set large-img-loaded to true
+		// 	// cur_img.data('large-img-loaded', true)
 
-			if (src) {
-			  ui.glass.css({
-				'background-image': 'url(' + src + ')',
-				'background-repeat': 'no-repeat'
-			  });
-			}
+		// 	if (src) {
+		// 	  ui.glass.css({
+		// 		'background-image': 'url(' + src + ')',
+		// 		'background-repeat': 'no-repeat'
+		// 	  });
+		// 	}
 
-			// When the user hovers on the image, the script will first calculate
-			// the native dimensions if they don't exist. Only after the native dimensions
-			// are available, the script will show the zoomed version.
-			//if(!native_width && !native_height) {
+		// 	// When the user hovers on the image, the script will first calculate
+		// 	// the native dimensions if they don't exist. Only after the native dimensions
+		// 	// are available, the script will show the zoomed version.
+		// 	//if(!native_width && !native_height) {
 
-			  if (!cur_img.data('native_width')) {
-				// This will create a new image object with the same image as that in .small
-				// We cannot directly get the dimensions from .small because of the 
-				// width specified to 200px in the html. To get the actual dimensions we have
-				// created this image object.
-				var image_object = new Image();
+		// 	  if (!cur_img.data('native_width')) {
+		// 		// This will create a new image object with the same image as that in .small
+		// 		// We cannot directly get the dimensions from .small because of the 
+		// 		// width specified to 200px in the html. To get the actual dimensions we have
+		// 		// created this image object.
+		// 		var image_object = new Image();
 
-				image_object.onload = function() {
-				  // This code is wrapped in the .load function which is important.
-				  // width and height of the object would return 0 if accessed before 
-				  // the image gets loaded.
-				  native_width = image_object.width;
-				  native_height = image_object.height;
+		// 		image_object.onload = function() {
+		// 		  // This code is wrapped in the .load function which is important.
+		// 		  // width and height of the object would return 0 if accessed before 
+		// 		  // the image gets loaded.
+		// 		  native_width = image_object.width;
+		// 		  native_height = image_object.height;
 
-				  cur_img.data('native_width', native_width);
-				  cur_img.data('native_height', native_height);
+		// 		  cur_img.data('native_width', native_width);
+		// 		  cur_img.data('native_height', native_height);
 
-				  //console.log(native_width, native_height);
+		// 		  //console.log(native_width, native_height);
 
-				  mouseMove.apply(this, arguments);
+		// 		  mouseMove.apply(this, arguments);
 
-				  ui.glass.on('mousemove', mouseMove);
-				};
+		// 		  ui.glass.on('mousemove', mouseMove);
+		// 		};
 
-				image_object.src = src;
+		// 		image_object.src = src;
 				
-				return;
-			  } else {
+		// 		return;
+		// 	  } else {
 
-				native_width = cur_img.data('native_width');
-				native_height = cur_img.data('native_height');
-			  }
-			//}
-			//console.log(native_width, native_height);
+		// 		native_width = cur_img.data('native_width');
+		// 		native_height = cur_img.data('native_height');
+		// 	  }
+		// 	//}
+		// 	//console.log(native_width, native_height);
 
-			mouseMove.apply(this, arguments);
+		// 	mouseMove.apply(this, arguments);
 
-			ui.glass.on('mousemove', mouseMove);
-		  });
+		// 	ui.glass.on('mousemove', mouseMove);
+		//   });
 
-		  ui.glass.on('mouseout', function() {
-			ui.glass.off('mousemove', mouseMove);
-		  });
-		}
+		//   ui.glass.on('mouseout', function() {
+		// 	ui.glass.off('mousemove', mouseMove);
+		//   });
+		// }
 		
 		$("#default").on("click",function()
 		{
@@ -613,6 +627,11 @@
 		var window_height = $(window).height();
 		var window_width = $(window).width();
 		// $(".header").css("height", window_height + "px");
+
+
+		/* Set carousel maxHeight to slider's height */
+		$('#about-carousel').css('max-height', $('#about-slider').css('height'))
+
 		
 	});
 	/* Event - Window Resize /- */

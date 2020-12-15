@@ -57,12 +57,14 @@
 					<div class="category-box product-box">
 						<span class="sale">sale</span>
 						<div class="inner-product">
-							<img src="{{ url_for('static', filename='/images/products/watch/Rolex/1/thumb.png') }}" alt="featured-img"/>
-							<div class="product-box-inner">
+							<a href="{{ url_for('product', watch_id=1, watch_brand='Rolex') }}">
+								<img src="{{ url_for('static', filename='/images/products/watch/Rolex/1/thumb.png') }}" alt="featured-img"/>
+							</a>
+							<!-- <div class="product-box-inner">
 								<ul>
 									<li><a title="Rolex Submariner 116610LN" href="{{ url_for('static', filename='images/products/Rolex/submariner-date-thumb.png') }}"><i class="fa fa-eye"></i></a></li>
 								</ul>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<a href="{{ url_for('product', watch_id=1, watch_brand='Rolex') }}" class="product-title">Rolex Submariner 40mm, black dial – 116610LN</a>

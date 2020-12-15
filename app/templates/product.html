@@ -60,22 +60,22 @@
 						<div id="about-slider" class="flexslider col-md-9 col-sm-9 col-xs-9 product-slider">
 							<ul class="slides">
 								<li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;">
-									<img class="magniflier" src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL1.jpg" alt="product-thumb" draggable="false">
+									<a href="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL1.jpg"><img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL1.jpg" alt="product-thumb" draggable="false"></a> 
 								</li>
 								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-									<img class="magniflier" src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL2.jpg" alt="product-thumb" draggable="false">
+									<a href="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL2.jpg"><img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL2.jpg" alt="product-thumb" draggable="false"></a> 
 								</li>
 								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-									<img class="magniflier" src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL3.jpg" alt="product-thumb" draggable="false">
+									<a href="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL3.jpg"><img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL3.jpg" alt="product-thumb" draggable="false"></a> 
 								</li>
 								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-									<img class="magniflier" src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL4.jpg" alt="product-thumb" draggable="false">
+									<a href="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL4.jpg"><img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL4.jpg" alt="product-thumb" draggable="false"></a> 
 								</li>
 								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-									<img class="magniflier" src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL5.jpg" alt="product-thumb" draggable="false">
+									<a href="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL5.jpg"><img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL5.jpg" alt="product-thumb" draggable="false"></a> 
 								</li>
 								<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
-									<img class="magniflier" src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL6.jpg" alt="product-thumb" draggable="false">
+									<a href="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL6.jpg"><img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL6.jpg" alt="product-thumb" draggable="false"></a> 
 								</li>
 							</ul>
 						</div>
@@ -88,7 +88,7 @@
 				</div><!-- col-md-7 /- -->
 				
 				<!-- col-md-5 -->
-				<div class="col-md-5 single-product-sidebar">
+				<div class="col-md-5 col-xs-12 single-product-sidebar">
 					<div class="page-header">
 						<h3>{{ watch.brand_name }} {{ watch.name }}</h3>
 					</div>
@@ -98,7 +98,10 @@
 					<p>{{ watch.description | replace("\n", "<br>") }}</p>
 					{% endautoescape %}
 					<ul class="single-side-widget top-social ow-left-padding">
-						<li><img style='height: 40px' src="{{ url_for('static', filename='images/cart/rolex-icon.svg') }}" alt="Rolex"></li>
+						<li>
+							<img style='height: 40px' src="{{ url_for('static', filename='images/cart/rolex-icon.svg') }}" alt="Rolex">
+						</li>
+						
 					</ul>
 					<aside class="widget widget_recent_post"style="padding-top: 0px;">						
 						<div role="tabpanel">
