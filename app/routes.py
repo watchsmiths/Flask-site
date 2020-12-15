@@ -121,7 +121,8 @@ def contacter(watch_brand, watch_name):
     newsletter_form=newsletter()  
     if newsletter_form.validate_on_submit():
         flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
-    #Look at passing Brand name through to route aswell
+    
+
     form.subject.data = f'Enquiry: {watch_brand} {watch_name}'
 
     if request.method == "POST":
@@ -130,7 +131,7 @@ def contacter(watch_brand, watch_name):
         message = form.description.data
         name = form.yourname.data
 
-        msg = Message(subject=subject, body=message, sender=app.config['MAIL_USERNAME'], recipients='enquiries@watchsmiths.co.uk', reply_to=email)
+        msg = Message(subject=subject, body=message, sender=app.config['MAIL_USERNAME'], recipients=['enquiries@watchsmiths.co.uk'], reply_to=email)
         mail.send(msg)
 
         flash(f'Thank you for your enquiry, confirmation of recipt will be sent to {email}. We aim to get back to you shortly', "success")

@@ -87,8 +87,6 @@
 
 
 
-		/* Set carousel maxHeight to slider's height */
-		$('#about-carousel').css('max-height', $('#about-slider').css('height'))
 
 
 		$('.navbar-nav li a, .logo-block a').on('click', function(event)
@@ -616,6 +614,10 @@
 			longitude: 9.473413,
 			zoom: 10
 		});
+
+
+		/* Set carousel maxHeight to slider's height */
+		$('#about-carousel').css('max-height', $('#about-slider').css('height'))
 	
 	});	
 	/* document.ready /- */		

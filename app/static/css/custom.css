@@ -50,6 +50,9 @@
 	margin-top: 50px;
 }
 
+#about-slider, #about-carousel {
+	border: 3px solid #b1a599;
+}
 
 #pricing > div > span {
 	position: absolute;
