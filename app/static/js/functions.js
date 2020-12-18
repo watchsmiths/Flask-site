@@ -617,8 +617,9 @@
 
 
 		/* Set carousel maxHeight to slider's height */
-		$('#about-carousel').css('max-height', $('#about-slider').css('height'))
-	
+		if ($('#about-slider').css('height') > "100px") {
+			$('#about-carousel').css('max-height', $('#about-slider').css('height'))
+		}
 	});	
 	/* document.ready /- */		
 	

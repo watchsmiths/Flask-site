@@ -52,6 +52,7 @@
 
 #about-slider, #about-carousel {
 	border: 3px solid rgb(177 165 153 / 0.6);
+	min-height: 100px;
 }
 
 #pricing > div > span {
