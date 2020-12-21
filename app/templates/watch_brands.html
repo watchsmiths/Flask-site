@@ -44,7 +44,11 @@
 					{% else %} -->#}
 						<div class="col-md-3 col-sm-3 col-xs-6">
 							<div class="category-box">
+								{% if brand.name =='Sale' %}
+								<a title="{{ brand.name }}" href="{{ url_for('sale')}}">
+								{% else %}
 								<a title="{{ brand.name }}" href="{{ url_for('watchbrand', watch_brand=brand.name )}}">
+								{% endif %}
 									<img src="/static/images/category/{{ brand.logo }}.png" alt="cat-img" />
 									<span>{{ brand.name }}</span>
 									<div class="cat-hover"></div>

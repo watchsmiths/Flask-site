@@ -79,6 +79,7 @@ a[href^="mailto"]:hover {
 
 .newsletter_form {
 	display: flex;
+	/* transition: box-shadow 1.5s ease-in-out 2.5s;   */
 }
 
 #newsletter-discount {
@@ -137,6 +138,10 @@ a[href^="mailto"]:hover {
 .back-to-top {
     display: none;
 	position: fixed;
+}
+
+#mailing {
+	cursor: pointer;
 }
 
 /* Media Queries */
