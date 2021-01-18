@@ -95,6 +95,16 @@
 
 		});
 
+		$('#newsletter-reveal')[0].click(function() {
+			$('.newsletter-div').toggle();
+		    $('.newsletter-div').css({
+                'transition': 'all 2s ease-out',
+                'opacity': 1,
+				'content-visibility': 'visible'
+			})
+		});
+
+
 	});	
 	/* document.ready /- */	
 	

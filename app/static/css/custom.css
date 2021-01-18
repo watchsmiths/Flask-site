@@ -51,9 +51,15 @@
 }
 
 #about-slider, #about-carousel {
-	border: 3px solid rgb(177 165 153 / 0.6);
+	border: 4px double rgb(177 165 153 / 0.6);
 	min-height: 100px;
+	box-shadow: 1px 9px 11px 1px #b3aa9b;
 }
+
+.shopping-cart-table {
+	box-shadow: 1px 9px 11px 1px #b3aa9b;
+}
+
 
 #pricing > div > span {
 	position: absolute;
@@ -67,14 +73,20 @@
     border: 1px solid #ff1111;
 }
 
-a[href^="mailto"] {
+a[href^="mailto"], #newsletter-reveal {
 	color: #b3aa9b;
 }
 
-a[href^="mailto"]:hover {
+a[href^="mailto"]:hover, #newsletter-reveal:hover {
 	text-decoration: underline;
 	/* color: #c99618; */
 	color: black;
+	transition: all 2s;
+}
+
+.newsletter-div {
+	opacity: 0;
+	content-visibility: hidden;
 }
 
 .newsletter_form {
@@ -140,7 +152,7 @@ a[href^="mailto"]:hover {
 	position: fixed;
 }
 
-#mailing {
+#mailing, #newsletter-reveal {
 	cursor: pointer;
 }
 

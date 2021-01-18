@@ -28,7 +28,12 @@
 						<div id="about-carousel" class="col-md-3 col-sm-3 col-xs-3 flexslider product-thumb no-padding" style="max-height: 535px; overflow: hidden;">	
                             <div class="flex-viewport" style="overflow: hidden; position: relative;">
                                 <ul class="slides" style="width: 602%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-                                    <li class="flex-active-slide" style="width: 126px; float: left; display: block;">
+									{#<!-- {% for thmb in thumbs %}
+										<li style="width: 126px; float: left; display: block;">
+											<img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/{{ thmb }}.jpg" alt="product-thumb" draggable="false">
+										</li>
+									{% endfor %} -->#}
+									<li class="flex-active-slide" style="width: 126px; float: left; display: block;">
                                         <img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PT1.jpg" alt="product-thumb" draggable="false">
                                     </li>
                                     <li style="width: 126px; float: left; display: block;">
@@ -59,6 +64,12 @@
                         </div>
 						<div id="about-slider" class="flexslider col-md-9 col-sm-9 col-xs-9 product-slider">
 							<ul class="slides">
+								{#<!-- {% for image in thumbs %}
+										<li style="width: 126px; float: left; display: block;">
+											<img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/{{ image }}.jpg" alt="product-thumb" draggable="false">
+										</li>	
+								{% endfor %} -->#}
+								
 								<li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;">
 									<a href="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL1.jpg"><img src="/static/images/products/watch/{{ watch_brand }}/{{ watch.product_id }}/PL1.jpg" alt="product-thumb" draggable="false"></a> 
 								</li>
@@ -116,10 +127,10 @@
 												<tr class="cart-subtotal">
 													<th>Product Price</th>
 													{% if watch.sale == 1 %}
-													<td><span class="amount"><del>&pound;{{ watch.price }}</del></span></td>
-													<td><span class="amount">&pound;{{ watch.discount_price }}</span></td>
+													<td><span class="amount"><del>&pound;{{ watch.price | currencyFormat }}</del></span></td>
+													<td><span class="amount">&pound;{{ watch.discount_price | currencyFormat }}</span></td>
 													{% else %}
-													<td><span class="amount">&pound;{{ watch.price }}</span></td>
+													<td><span class="amount">&pound;{{ watch.price | currencyFormat }}</span></td>
 													{% endif %}
 												</tr>
 												<!-- <tr class="cart-subtotal">
@@ -135,10 +146,10 @@
 												<tr class="order-total">
 													<th>Total Price</th>
 													{% if watch.sale == 1 %}
-													<td><strong><span class="total-amount">&pound;{{ watch.discount_price }}</span></strong></td>
+													<td><strong><span class="total-amount">&pound;{{ watch.discount_price | currencyFormat }}</span></strong></td>
 													<span class="sale">SALE</span>
 													{% else %}
-													<td><strong><span class="total-amount">&pound;{{ watch.price }}</span></strong></td>
+													<td><strong><span class="total-amount">&pound;{{ watch.price | currencyFormat }}</span></strong></td>
 													{% endif %}
 												</tr>
 											</tbody>
