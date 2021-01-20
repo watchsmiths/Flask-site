@@ -56,9 +56,9 @@
 					<a title="{{ watch.name }}" href="{{ url_for('product', watch_id= watch.product_id, watch_brand=watch.brand_name)}}" class="product-title">{{ watch.thumb_name }}</a>
 
 					{% if watch.sale == 1 %}
-					<span class="amount"><del>&pound;{{ watch.price }}</del> &pound;{{ watch.discount_price }}</span>
+					<span class="amount"><del>&pound;{{ watch.price | currencyFormat }}</del> &pound;{{ watch.discount_price | currencyFormat }}</span>
 					{% else %}
-					<span class="amount">&pound;{{ watch.price }}</span>
+					<span class="amount">&pound;{{ watch.price | currencyFormat }}</span>
 					{% endif %}
 				</div>
 				{% endfor %}
