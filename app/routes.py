@@ -75,11 +75,11 @@ def product(watch_brand, watch_id):
     # thumbs = []
     # large = []
 
-    # for filename in os.listdir(os.path.join(f'/images/products/watch/{ watch_brand }/{ watch.product_id }/')):
+    # for filename in os.listdir(os.path.join(f'/images/products/{ watch_brand }/{ watch.product_id }/')):
     #     if filename.startswith("PT"):
-    #         thumbs.append(os.path.join(f'/images/products/watch/{ watch_brand }/{ watch.product_id }/', filename))
+    #         thumbs.append(os.path.join(f'/images/products/{ watch_brand }/{ watch.product_id }/', filename))
     #     elif filename.startswith("PL"):
-    #         large.append(os.path.join(f'/images/products/watch/{ watch_brand }/{ watch.product_id }/', filename))
+    #         large.append(os.path.join(f'/images/products/{ watch_brand }/{ watch.product_id }/', filename))
     #     else:
     #         continue
 
