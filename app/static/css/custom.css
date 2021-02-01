@@ -3,6 +3,12 @@
 
 /*CSS*/
 
+
+/* Fonts */
+@import url('http://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic,900,900italic');
+@import url('http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,400italic,300italic,500,500italic,700,700italic,900,900italic');
+@import url('http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic');
+
 .flashes{ 
 	text-align: center;
 }
@@ -105,9 +111,13 @@ a[href^="mailto"]:hover, #newsletter-reveal:hover {
 	text-align: center;
 }
 
-/*icon for address in footer*/
-.address {
+/*icon for address & phone in footer*/
+.widget_about .address {
 	background-image: url("../images/icon/location-icon.png")
+}
+
+.widget_about .helpline {
+	background-image: url("../images/icon/phone-icon.png");
 }
 
 /*border on bottom for div - media query will change for smaller screens (min-width:991px)*/
@@ -183,6 +193,10 @@ a[href^="mailto"]:hover, #newsletter-reveal:hover {
 	.widget_about {
 		background-image: none;
 	}
+	/* check if below is working */
+	.helpline, .address {
+		background-position: 90px 0px;
+	}
 }
 
 /* @media (max-width:992px) {
@@ -203,7 +217,11 @@ a[href^="mailto"]:hover, #newsletter-reveal:hover {
 		border-bottom: none;
 		border-right: 1px solid #e7e7e7;
 	}
-	
+	/* check if below is working */
+	.helpline, .address {
+		background-position: 35% 0%;
+	}
+
 }
 
 @media (min-width: 992px){
