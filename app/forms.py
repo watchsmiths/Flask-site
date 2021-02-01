@@ -24,8 +24,8 @@ class Contact(FlaskForm):
     submit = SubmitField('Submit')
 
 class newsletter(FlaskForm):
-    email = EmailField('Email Address', [validators.DataRequired("You Must Enter Your Email Address"), validators.Length(min=6, max=35), validators.Email("This field requires a valid email address")])
-    submit = SubmitField('Submit')
+    email_newsletter = EmailField('Email Address', [validators.DataRequired("You Must Enter Your Email Address"), validators.Length(min=6, max=35), validators.Email("This field requires a valid email address")])
+    submit_newsletter = SubmitField('Submit')
 
 
 # class RegistrationForm(FlaskForm):
