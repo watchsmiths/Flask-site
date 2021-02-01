@@ -187,6 +187,16 @@ def currencyFormat(value):
     value = float(value)
     return "{:,.2f}".format(value)
 
+@app.route('/terms', methods=['GET','POST'])
+def terms():
+    newsletter_form=newsletter()
+    return render_template('terms.html', title= 'Terms & Conditions', newsletter_form=newsletter_form)
+
+@app.route('/test', methods=['GET','POST'])
+def test():
+    newsletter_form=newsletter()
+    return render_template('test.html', newsletter_form=newsletter_form)
+    
 # @app.route('/cart', methods=['GET', 'POST'])
 # def cart():
 #     newsletter_form=newsletter()
