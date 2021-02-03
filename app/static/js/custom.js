@@ -82,29 +82,6 @@
             $('#header').next('div').css({"margin-top": "0px"});
 		} // set sticky menu - end
 
-		// Scroll into newsletter when mailing is clicked, form glow after scroll
-		$('#mailing').click(function() {
-			$("#newsletter-discount")[0].scrollIntoView({
-				behavior: "smooth"
-			});
-
-			$(".newsletter_form").css({
-				'transition': 'box-shadow 1s ease-in-out 1.5s',
-				'box-shadow': '0px 40px 80px 20px #beb2a6'
-			});
-
-		});
-
-		$('#newsletter-reveal')[0].click(function() {
-			$('.newsletter-div').toggle();
-		    $('.newsletter-div').css({
-                'transition': 'all 2s ease-out',
-                'opacity': 1,
-				'content-visibility': 'visible'
-			})
-		});
-
-
 	});	
 	/* document.ready /- */	
 	

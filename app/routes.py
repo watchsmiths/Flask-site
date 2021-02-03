@@ -192,10 +192,20 @@ def terms():
     newsletter_form=newsletter()
     return render_template('terms.html', title= 'Terms & Conditions', newsletter_form=newsletter_form)
 
-@app.route('/test', methods=['GET','POST'])
-def test():
+@app.route('/privacy', methods=['GET','POST'])
+def privacy():
     newsletter_form=newsletter()
-    return render_template('test.html', newsletter_form=newsletter_form)
+    return render_template('privacy.html', title= 'Privacy Policy', newsletter_form=newsletter_form)
+
+@app.route('/cookies', methods=['GET','POST'])
+def cookie():
+    newsletter_form=newsletter()
+    return render_template('cookies.html', title= 'Cookie Policy', newsletter_form=newsletter_form)
+
+@app.route('/shopping', methods=['GET','POST'])
+def shopping():
+    newsletter_form=newsletter()
+    return render_template('shopping_policy.html', title = 'Shopping Policy', newsletter_form=newsletter_form)
     
 # @app.route('/cart', methods=['GET', 'POST'])
 # def cart():
