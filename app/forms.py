@@ -13,7 +13,6 @@ class Sellwatch(FlaskForm):
     box = SelectField('Box', choices={('Yes','Yes'), ('No','No')}, default='Yes')
     papers = SelectField('Papers', choices={('Yes','Yes'), ('No','No')}, default='Yes')
     description = TextAreaField('Brief Description of item', [validators.optional(), validators.Length(min= 14, max=500)])
-    image = FileField('Photo (Required)', [validators.DataRequired('You Must Upload an Image File to Continue. (.JPG, .PNG MAX filesize: 4MB)')])
     submit = SubmitField('Submit')
 
 class Contact(FlaskForm):
@@ -24,9 +23,10 @@ class Contact(FlaskForm):
     submit = SubmitField('Submit')
 
 class newsletter(FlaskForm):
-    email_newsletter = EmailField('Email Address', [validators.DataRequired("You Must Enter Your Email Address"), validators.Length(min=6, max=35), validators.Email("This field requires a valid email address")])
-    submit_newsletter = SubmitField('Submit')
+    mailaccount_r = EmailField('Enter Your Email Address: ', [validators.DataRequired("You Must Enter Your Email Address"), validators.Length(min=6, max=51), validators.Email("This field requires a valid email address"), validators.EqualTo('mailaccount2_r', message='Passwords must match')])
 
+    mailaccount2_r = EmailField('Confirm Your Email Address: ', [validators.Length(min = 6, max=51), validators.DataRequired('You Must Enter Your Email Address'), validators.Email("This field requires a valid email address")])
+    submit_newsletter = SubmitField('Submit')
 
 # class RegistrationForm(FlaskForm):
 #     firstname = StringField('First Name', validators=[Length(min=4, max=25)])

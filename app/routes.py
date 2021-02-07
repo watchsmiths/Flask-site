@@ -15,40 +15,21 @@ conn = sqlite3.connect('myshop.db')
 @app.route('/', methods=["GET", "POST"])
 def home():
     newsletter_form = newsletter()
-    if newsletter_form.validate_on_submit():
-        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
-        return (render_template('index.html', newsletter_form=newsletter_form))
-    
-
-
     return render_template('index.html', newsletter_form=newsletter_form)
 
 @app.route('/about', methods=['GET','POST'])
 def about():
     newsletter_form=newsletter()
-    if newsletter_form.validate_on_submit():
-        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
-        return (render_template('about.html', title = 'About Us', newsletter_form=newsletter_form))
-    
     return render_template('about.html', title = 'About Us', newsletter_form=newsletter_form)
 
 @app.route('/brands/', methods=['GET','POST'])
 def brands():
-    
     newsletter_form= newsletter()
-    if newsletter_form.validate_on_submit():
-        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
-        return (render_template('watch_brands.html', title = 'Brands', newsletter_form=newsletter_form))
-    
     return render_template('watch_brands.html', title='Brands', brandnames=Brands.query.all(), newsletter_form=newsletter_form)
 
 @app.route('/brands/<string:watch_brand>/', methods=['GET','POST'])
 def watchbrand(watch_brand):
     newsletter_form = newsletter()
-    if newsletter_form.validate_on_submit():
-        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
-        return (render_template('brandpage.html', title=watch_brand, newsletter_form=newsletter_form))
-    
     page = Brands.query.filter(Brands.name==watch_brand).all()
     watches = Products.query.filter_by(brand_name=watch_brand)
     
@@ -65,10 +46,6 @@ def watchbrand(watch_brand):
 @app.route('/brands/<string:watch_brand>/<int:watch_id>', methods=['GET','POST'])
 def product(watch_brand, watch_id):
     newsletter_form = newsletter()
-    if newsletter_form.validate_on_submit():
-        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
-        return (render_template('product.html', title=str(watch_brand+" "+watch.thumb_name), watch=watch, watch_brand=watch_brand, newsletter_form=newsletter_form))
-    
     watch = Products.query.filter_by(brand_name=watch_brand, product_id=watch_id).first()
     watches = Products.query.filter(Products.product_id==watch_id).all()
 
@@ -82,8 +59,6 @@ def product(watch_brand, watch_id):
     #         large.append(os.path.join(f'/images/products/{ watch_brand }/{ watch.product_id }/', filename))
     #     else:
     #         continue
-
-
     if not watch:
         abort(404)
 
@@ -93,34 +68,54 @@ def product(watch_brand, watch_id):
     else:
         abort(404)
 
-
-
 @app.route('/sale', methods=['GET','POST'])
 def sale():
     newsletter_form = newsletter()
-    if newsletter_form.validate_on_submit():
-        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
-        return (render_template('sale.html', title = 'Sale', newsletter_form=newsletter_form))
-    
     return render_template('sale.html', title = 'Sale', newsletter_form=newsletter_form)
 
 @app.route('/sell_watch', methods=['GET', 'POST'])
 def sellwatch():
     form = Sellwatch() 
     newsletter_form=newsletter()
-    if newsletter_form.validate_on_submit():
-        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
-        return (render_template('sell_watch.html', title = 'Sell Your Watch', form=form, newsletter_form=newsletter_form))
+    
+    if request.method == "POST":
+        email = form.email.data
+        brand = form.brand.data
+        model = form.model.data
+        age = form.age.data
+        box = form.box.data
+        papers = form.papers.data
+        desc = form.description.data
+        name = form.yourname.data
+
+        msg = Message(subject="Sell My Watch", sender=app.config['MAIL_USERNAME'], recipients=['enquiries@watchsmiths.co.uk'], reply_to=email)
+        msg.body = f"""
+        
+        Name = {name}
+        Brand = {brand}
+        Model = {model} 
+        Age = {age}
+        Box = {box}
+        papers = {papers}
+        
+        {desc}
+
+        """
+        mail.send(msg)
+
+        flash(f'Thank you for your enquiry, confirmation of recipt will be sent to {email}. We aim to get back to you shortly', "success")
+        return render_template('sell_watch.html', title = 'Sell Your Watch', form=form, newsletter_form=newsletter_form)
+    
     
     return render_template('sell_watch.html', title = 'Sell Your Watch', form=form, newsletter_form=newsletter_form)
+
+
+
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     form = Contact()
     newsletter_form=newsletter()  
-    if newsletter_form.validate_on_submit():
-        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
-        return (render_template('contact.html', title = 'Contact Us', form=form, newsletter_form=newsletter_form))
     
     if request.method == "POST":
         email = form.email.data
@@ -140,11 +135,6 @@ def contact():
 def contacter(watch_brand, watch_name):   
     form = Contact()
     newsletter_form=newsletter()  
-    if newsletter_form.validate_on_submit():
-        flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
-        return (render_template('contact.html', title = 'Contact Us', form=form, newsletter_form=newsletter_form, watch_name=watch_name, watch_brand=watch_brand))
-    
-
     form.subject.data = f'Enquiry: {watch_brand} {watch_name}'
 
     if request.method == "POST":
@@ -163,13 +153,18 @@ def contacter(watch_brand, watch_name):
     #url logic
     page = Brands.query.filter(Brands.name==watch_brand).all()
     watches = Products.query.filter_by(brand_name=watch_brand)
+    watch_name = Products.query.filter(Products.name==watch_name).first()
+    # Products.query.filter_by(name=watch_name).first()
+    
     
     if not page:
         abort(404)
     
-    
     # fix logic for entering any string in URL
-    return render_template('contact.html', title = 'Contact Us', form=form, newsletter_form=newsletter_form, watch_name=watch_name, watch_brand=watch_brand)
+    if watch_name:
+        return render_template('contact.html', title = 'Contact Us', form=form, newsletter_form=newsletter_form, watch_name=watch_name, watch_brand=watch_brand)
+    else:
+        abort(404)
 
 @app.errorhandler(404)
 def not_found_error(error):
@@ -206,13 +201,20 @@ def cookie():
 def shopping():
     newsletter_form=newsletter()
     return render_template('shopping_policy.html', title = 'Shopping Policy', newsletter_form=newsletter_form)
+
+
+# @app.route('/test', methods=['GET','POST'])
+# def test():
+#     newsletter_form=newsletter()
+#     return render_template('test.html', newsletter_form=newsletter_form)
     
+
+
+
 # @app.route('/cart', methods=['GET', 'POST'])
 # def cart():
 #     newsletter_form=newsletter()
-#     if newsletter_form.validate_on_submit():
-#         flash(f"You've Been Added to The Mailing List, Your Discount Code Will Be Sent to {newsletter_form.email.data}", 'success')
-#         return (render_template('cart.html', title = 'Cart', newsletter_form=newsletter_form))
+#     
     
 #     return render_template('cart.html', title='Cart', newsletter_form=newsletter_form)
 

@@ -16,7 +16,7 @@
 		<div class="page-header bottom-shadow">
 			<h3>Contact us</h3>
 			{% if watch_name %}
-			<p>To place an order or make an enquiry about <span style="color:black">{{watch_brand}} {{watch_name}}</span>, fill the form below <br> Or email <a href="mailto:enquiries@watchsmiths.co.uk?subject=Enquiry:%20{{watch_brand}}%20{{watch_name}}">enquiries@watchsmiths.co.uk</a> <br>Once we receive your email you will get a confirmation email and we will get back to you soon</p>
+			<p>To place an order or make an enquiry about <span style="color:black">{{watch_brand}} {{watch_name.name}}</span>, fill the form below <br> Or email <a href="mailto:enquiries@watchsmiths.co.uk?subject=Enquiry:%20{{watch_brand}}%20{{watch_name}}">enquiries@watchsmiths.co.uk</a> <br>Once we receive your email you will get a confirmation email and we will get back to you soon</p>
 			{% else %}
 			<p> Get in Touch <br> Fill the form below or email <a href="mailto:enquiries@watchsmiths.co.uk?subject=Enquiry:%20{{watch_brand}}%20{{watch_name}}">enquiries@watchsmiths.co.uk</a> <br>Once we receive your email you will get a confirmation email and we will get back to you soon</p></p>
 			{% endif %}
@@ -27,11 +27,6 @@
 	<!-- contact-form-details -->
 	<div class="contact-form-details">
 		{% include "_messages.html" %}
-		{% if success %}
-		<div class="alert alert-success" style="text-align: center;" role="alert">
-			Thanks for getting in touch, we will get back to you shortly
-		</div>
-		{% endif %}
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 col-sm-12">

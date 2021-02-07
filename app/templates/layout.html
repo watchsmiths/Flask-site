@@ -211,7 +211,10 @@
 						<ul class="nav navbar-nav">
 							<li class="{{ 'active' if active_page == 'home' else ''}}"><a title="Home" href="{{  url_for('home')  }}">Home</a></li>				
 							<li class="{{ 'active' if active_page == 'about' else ''}}"><a title="About Us" href="{{  url_for('about')  }}">About Us</a></li>
-							<li class="{{ 'active' if active_page == 'brands' else ''}} dropdown"><a href="{{  url_for('brands')  }}" class="dropdown-toggle" title="Watches">Watches</a>
+							<li class="{{ 'active' if active_page == 'brands' else ''}} dropdown"><a href="{{  url_for('brands')  }}" class="dropdown-toggle" title="Watches">Watches<div role="tooltip" class="tooltip top">
+								<div class="tooltip-arrow"></div>
+								<div class="tooltip-inner">New</div>
+							</div></a>
 								<ul class="dropdown-menu">
 									<li><a href="{{  url_for('brands')  }}">Watch Brands</a></li>
 									<li><a href="{{  url_for('sale')  }}">Sale Watches</a></li>
@@ -240,34 +243,85 @@
 
 	<!-- Footer Section -->
 	<div id="footer-section" class="footer-section">
-    <!--	NEWSLETTER BELOW-->
-    <!-- News Letter -->
-    <div id="news-letter-section" class="news-letter-section">
-      <!-- container -->
-      <div class="container">
-        <!-- Section Header -->
-        <div class="section-header">
-          <h3>Sign up for our Newsletter</h3>
-         <p id="newsletter-discount">Enter your email below for £100 off your first order</p>
-        </div>
-		<!-- Section Header /- -->
-        <div class="col-md-6 col-md-offset-3">
-		  <form class="navbar-form newsletter_form" method="POST">
-			{{ newsletter_form.hidden_tag() }}
-            <div class="form-group">
-              <svg viewBox="0 0 485.211 485.211">
-                <path d="M485.211,363.906c0,10.637-2.992,20.498-7.785,29.174L324.225,221.67l151.54-132.584   c5.895,9.355,9.446,20.344,9.446,32.219V363.906z M242.606,252.793l210.863-184.5c-8.653-4.737-18.397-7.642-28.908-7.642H60.651   c-10.524,0-20.271,2.905-28.889,7.642L242.606,252.793z M301.393,241.631l-48.809,42.734c-2.855,2.487-6.41,3.729-9.978,3.729   c-3.57,0-7.125-1.242-9.98-3.729l-48.82-42.736L28.667,415.23c9.299,5.834,20.197,9.329,31.983,9.329h363.911   c11.784,0,22.687-3.495,31.983-9.329L301.393,241.631z M9.448,89.085C3.554,98.44,0,109.429,0,121.305v242.602   c0,10.637,2.978,20.498,7.789,29.174l153.183-171.44L9.448,89.085z"/>
-			  </svg>
-			  {{ newsletter_form.email_newsletter(placeholder="Enter Your Email Here", class='form-control', required='DataRequired') }}
+		<!--	NEWSLETTER BELOW-->
+		<!-- News Letter -->
+		<div id="news-letter-section" class="news-letter-section">
+		<!-- container -->
+		<div class="container" style="text-align: center">
+			<!-- Section Header -->
+			<div class="section-header navbar-form" style="border:none">
+				<h3>Sign up for our Newsletter</h3>
+				<p id="newsletter-discount">Click below for £100 off your first order</p>
+				<button id="myBtn" class="btn btn-default">Click Here</button>
 			</div>
-			{{ newsletter_form.submit_newsletter(class="btn btn-default") }}
-		  </form>
-		 
-		</div> 
-      </div>
-      <!-- container /- -->
+			<!-- The Modal -->
+			<div id="myModal" class="modal contact-form">
+			<!-- Modal content -->
+				<div class="modal-content modal-content col-md-6 col-md-offset-3 ">
+					<div class="modal-header">
+						<span class="close">&times;</span>
+						<div class="section-header" style="margin-bottom: 0px;">
+							<h3>Subscribe to Our Newsletter</h3>
+						</div>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal" action="https://ml.kundenserver.de/cgi-bin/mailinglist.cgi" method="POST" target="_blank">
+							{{ newsletter_form.hidden_tag() }}
+							<div class="form-group">
+								<div class="col-md-6 col-md-offset-3">
+									{{ newsletter_form.mailaccount_r.label }}
+									<br />
+									{{ newsletter_form.mailaccount_r(placeholder="Enter Your Email Address", class='form-control', required='DataRequired') }}
+									<br>
+									{{ newsletter_form.mailaccount2_r.label }}
+									<br />
+									{{ newsletter_form.mailaccount2_r(placeholder="Confirm Your Email Address", class='form-control', required='DataRequired') }}
+								</div>
+							</div>
+				
+							<div class="form-group">
+								<div class="col-md-12">
+									<br>
+									<input checked name="subscribe_r" type="radio" value="subscribe">
+									Subscribe me to newsletter@watchsmiths.co.uk.
+									<br> <br>
+									<input name="subscribe_r" type="radio" value="unsubscribe">
+									Unsubscribe me from newsletter@watchsmiths.co.uk.
+								</div>
+								<br />
+							</div>
+							
+							<div class="drop-line bottom-shadow"></div>
+							<div class="form-group" style="display:none">
+							<input name="FBMLNAME" type="hidden" value="newsletter@watchsmiths.co.uk">
+							<br />
+							<input name="FBLANG" type="hidden" value="en">
+							<br />
+							<input name="FBURLERROR_L" type="hidden" value="https://ml.kundenserver.de/mailinglist/error.en.html">
+							<br />
+							<input name="FBURLSUBSCRIBE_L" type="hidden" value="https://ml.kundenserver.de/mailinglist/subscribe.en.html">
+							<br />
+							<input name="FBURLUNSUBSCRIBE_L" type="hidden" value="https://ml.kundenserver.de/mailinglist/unsubscribe.en.html">
+							<br />
+							<input name="FBURLINVALID_L" type="hidden" value="https://ml.kundenserver.de/mailinglist/invalid.en.html">
+							</div>
+							<div class="modal-footer">
+							<div class="form-group" style="display:inline-block; text-align:center">
+								{{ newsletter_form.submit_newsletter(class="btn btn-default", value="Send") }}
+								<input type="RESET" value="Reset" class="btn btn-default">
+							</div>
+						</form>	
+					</div>
+				</div>
+			</div>
+	
+		</div>
+
+
+		<!-- Section Header /- -->
+		</div>
+		<!-- container /- -->
     </div>
-	<!-- {% include "_newsletter.html" %} -->
     <!-- News Letter /- -->
     <!--ICON BANNER BELOW -->
     <!-- informational-icons -->

@@ -81,6 +81,31 @@
 			$('.menu-block').removeClass("navbar-fixed-top");
             $('#header').next('div').css({"margin-top": "0px"});
 		} // set sticky menu - end
+		
+		
+		// Newsletter popup
+		// Get the modal
+		var modal = $("#myModal");
+
+		// Get the button that opens the modal
+		var btn = $("#myBtn");
+
+		// Get the <span> element that closes the modal
+		var span = $(".close");
+
+		// When the user clicks the button, open the modal 
+		btn.click(function() {
+			modal.show();
+		})
+
+		// When the user clicks on <span> (x), close the modal
+		span.click(function(){modal.hide()})
+
+		// When the user clicks anywhere outside of the modal, close it
+		$(document).click(function(event) {if (event.target == modal) {modal.hide();}})
+
+
+
 
 	});	
 	/* document.ready /- */	
