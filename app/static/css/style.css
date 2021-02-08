@@ -669,7 +669,7 @@ a {
 	height: 40px;
 	width: 140px;
 	border: none;
-	border-radius: 0;
+	/* border-radius: 5px; */
 	display: inline-block;
 	margin-top: 12px;
 }
@@ -1227,7 +1227,7 @@ a {
 .news-letter-section .navbar-form .btn {
 	background-color: #b1a599;
 	border: none;
-	border-radius: 0;
+	/* border-radius: 5px; */
 	width: 28%;
 	height: 40px;
 	line-height: 40px;
@@ -1421,7 +1421,7 @@ a {
 	padding: 8px 35px;
 	background-color: #b1a599;
 	border: none;
-	border-radius: 0;
+	/* border-radius: 5px; */
 }
 
 .contact-form.bottom-shadow:after,
@@ -1704,7 +1704,7 @@ a {
 	margin: 0 auto;
 	background-color: #b1a599;
 	border: none;
-	border-radius: 0;
+	/* border-radius: 5px; */
 	line-height: 40px;
 	padding: 0;
 	font-size: 14px;
@@ -2455,7 +2455,7 @@ input.qtyplus, input.qtyminus {
 	margin: 0 auto;
 	background-color: #b1a599;
 	border: none;
-	border-radius: 0;
+	/* border-radius: 5px; */
 	line-height: 40px;
 	padding: 0;
 	font-size: 14px;
@@ -3595,7 +3595,7 @@ select:focus {
 	margin: 0 auto 40px;
 	background-color: #b1a599;
 	color: #fff;
-	border-radius: 0;
+	/* border-radius: 5px; */
 }
 
 .error-page .col-md-12 .btn:hover {
@@ -3768,5 +3768,5 @@ select:focus {
 }
 
 .mega-dropdown-slider ul .btn{
-	border-radius: 0;
+	/* border-radius: 5px; */
 }
