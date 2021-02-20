@@ -105,9 +105,11 @@
 					</div>
                     <br>
 					<br>
-					{% autoescape false %} 
-					<p>{{ watch.description | replace("\n", "<br>") }}</p>
-					{% endautoescape %}
+					<div id="product-desc">
+						{% autoescape false %} 
+						<p>{{ watch.description | replace("\n", "<br>") }}</p>
+						{% endautoescape %}
+					</div>
 					<ul class="single-side-widget top-social ow-left-padding">
 						<li>
 							<img height="40px" src="{{ url_for('static', filename='images/cart/rolex-icon.svg') }}" alt="Rolex">
