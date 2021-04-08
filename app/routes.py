@@ -4,7 +4,7 @@ import requests, os, sqlite3
 from app import app, db, forms, mail
 # from app import bcrypt
 from .forms import Sellwatch, Contact, newsletter
-from .models import Brands, Products 
+from .models import Brands, Products
 from flask_mail import Message
 
 conn = sqlite3.connect('myshop.db')
@@ -32,16 +32,16 @@ def watchbrand(watch_brand):
     newsletter_form = newsletter()
     page = Brands.query.filter(Brands.name==watch_brand).all()
     watches = Products.query.filter_by(brand_name=watch_brand)
-    
+
 
     if not page:
         abort(404)
-    
+
     if page[0].name == 'Rolex' or page[0].name == 'Sale':
         return render_template('brandpage.html', title=watch_brand, watch_brand=watch_brand, watches=watches, newsletter_form=newsletter_form)
     else:
         return render_template('comingsoon.html', title=watch_brand, watch_brand=watch_brand, newsletter_form=newsletter_form)
-   
+
 
 @app.route('/brands/<string:watch_brand>/<int:watch_id>', methods=['GET','POST'])
 def product(watch_brand, watch_id):
@@ -75,9 +75,9 @@ def sale():
 
 @app.route('/sell_watch', methods=['GET', 'POST'])
 def sellwatch():
-    form = Sellwatch() 
+    form = Sellwatch()
     newsletter_form=newsletter()
-    
+
     if request.method == "POST":
         email = form.email.data
         brand = form.brand.data
@@ -88,16 +88,16 @@ def sellwatch():
         desc = form.description.data
         name = form.yourname.data
 
-        msg = Message(subject="Sell My Watch", sender=app.config['MAIL_USERNAME'], recipients=['enquiries@watchsmiths.co.uk'], reply_to=email)
+        msg = Message(subject="Sell My Watch", sender=os.getenv('MAIL_USERNAME'), recipients=['enquiries@watchsmiths.co.uk'], reply_to=email)
         msg.body = f"""
-        
+
         Name = {name}
         Brand = {brand}
-        Model = {model} 
+        Model = {model}
         Age = {age}
         Box = {box}
         papers = {papers}
-        
+
         {desc}
 
         """
@@ -105,8 +105,8 @@ def sellwatch():
 
         flash(f'Thank you for your enquiry, confirmation of recipt will be sent to {email}. We aim to get back to you shortly', "success")
         return render_template('sell_watch.html', title = 'Sell Your Watch', form=form, newsletter_form=newsletter_form)
-    
-    
+
+
     return render_template('sell_watch.html', title = 'Sell Your Watch', form=form, newsletter_form=newsletter_form)
 
 
@@ -115,15 +115,15 @@ def sellwatch():
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     form = Contact()
-    newsletter_form=newsletter()  
-    
+    newsletter_form=newsletter()
+
     if request.method == "POST":
         email = form.email.data
         subject = form.subject.data
         message = form.description.data
         name = form.yourname.data
 
-        msg = Message(subject=subject, body=message, sender=app.config['MAIL_USERNAME'], recipients=['enquiries@watchsmiths.co.uk'], reply_to=email)
+        msg = Message(subject=subject, body=message, sender=os.getenv('MAIL_USERNAME'), recipients=['enquiries@watchsmiths.co.uk'], reply_to=email)
         mail.send(msg)
 
         flash(f'Thank you for your enquiry, confirmation of recipt will be sent to {email}. We aim to get back to you shortly', "success")
@@ -132,9 +132,9 @@ def contact():
     return render_template('contact.html', title = 'Contact Us', form=form, newsletter_form=newsletter_form)
 
 @app.route('/contact/<string:watch_brand>/<string:watch_name>', methods=['GET', 'POST'])
-def contacter(watch_brand, watch_name):   
+def contacter(watch_brand, watch_name):
     form = Contact()
-    newsletter_form=newsletter()  
+    newsletter_form=newsletter()
     form.subject.data = f'Enquiry: {watch_brand} {watch_name}'
 
     if request.method == "POST":
@@ -143,7 +143,7 @@ def contacter(watch_brand, watch_name):
         message = form.description.data
         name = form.yourname.data
 
-        msg = Message(subject=subject, body=message, sender=app.config['MAIL_USERNAME'], recipients=['enquiries@watchsmiths.co.uk'], reply_to=email)
+        msg = Message(subject=subject, body=message, sender=os.getenv('MAIL_USERNAME'), recipients=['enquiries@watchsmiths.co.uk'], reply_to=email)
         mail.send(msg)
 
         flash(f'Thank you for your enquiry, confirmation of recipt will be sent to {email}. We aim to get back to you shortly', "success")
@@ -155,11 +155,11 @@ def contacter(watch_brand, watch_name):
     watches = Products.query.filter_by(brand_name=watch_brand)
     watch_name = Products.query.filter(Products.name==watch_name).first()
     # Products.query.filter_by(name=watch_name).first()
-    
-    
+
+
     if not page:
         abort(404)
-    
+
     # fix logic for entering any string in URL
     if watch_name:
         return render_template('contact.html', title = 'Contact Us', form=form, newsletter_form=newsletter_form, watch_name=watch_name, watch_brand=watch_brand)
@@ -207,15 +207,15 @@ def shopping():
 # def test():
 #     newsletter_form=newsletter()
 #     return render_template('test.html', newsletter_form=newsletter_form)
-    
+
 
 
 
 # @app.route('/cart', methods=['GET', 'POST'])
 # def cart():
 #     newsletter_form=newsletter()
-#     
-    
+#
+
 #     return render_template('cart.html', title='Cart', newsletter_form=newsletter_form)
 
 
@@ -233,7 +233,7 @@ def shopping():
 #     form = RegistrationForm(request.form)
 #     if request.method == 'POST' and form.validate():
 #         hash_password = bcrypt.generate_password_hash(form.password.data)
-        
+
 #         user = User(firstname=form.firstname.data, lastname=form.lastname.data, email=form.email.data,
 #                     password=hash_password)
 #         db.session.add(user)
@@ -248,7 +248,7 @@ def shopping():
 #     form = LoginForm(request.form)
 #     if request.method == "POST" and form.validate():
 #         user = User.query.filter_by(email = form.email.data).first()
-#         if user and bcrypt.check_password_hash(user.password, form.password.data): 
+#         if user and bcrypt.check_password_hash(user.password, form.password.data):
 #             session['email'] = form.email.data
 #             flash(f'Welcome {User.firstname}, You are now logged in', 'success')
 #             return redirect(request.args.get('next') or url_for('account'))
