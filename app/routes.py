@@ -88,7 +88,7 @@ def sellwatch():
         desc = form.description.data
         name = form.yourname.data
 
-        msg = Message(subject="Sell My Watch", sender=os.getenv('MAIL_USERNAME'), recipients=['enquiries@watchsmiths.co.uk'], reply_to=email)
+        msg = Message(subject="Sell My Watch", sender=app.config['MAIL_USERNAME'], recipients=['enquiries@watchsmiths.co.uk'], reply_to=email)
         msg.body = f"""
 
         Name = {name}
@@ -123,7 +123,7 @@ def contact():
         message = form.description.data
         name = form.yourname.data
 
-        msg = Message(subject=subject, body=message, sender=os.getenv('MAIL_USERNAME'), recipients=['enquiries@watchsmiths.co.uk'], reply_to=email)
+        msg = Message(subject=subject, body=message, sender=app.config['MAIL_USERNAME'], recipients=['enquiries@watchsmiths.co.uk'], reply_to=email)
         mail.send(msg)
 
         flash(f'Thank you for your enquiry, confirmation of recipt will be sent to {email}. We aim to get back to you shortly', "success")
@@ -143,7 +143,7 @@ def contacter(watch_brand, watch_name):
         message = form.description.data
         name = form.yourname.data
 
-        msg = Message(subject=subject, body=message, sender=os.getenv('MAIL_USERNAME'), recipients=['enquiries@watchsmiths.co.uk'], reply_to=email)
+        msg = Message(subject=subject, body=message, sender=app.config['MAIL_USERNAME'], recipients=['enquiries@watchsmiths.co.uk'], reply_to=email)
         mail.send(msg)
 
         flash(f'Thank you for your enquiry, confirmation of recipt will be sent to {email}. We aim to get back to you shortly', "success")
